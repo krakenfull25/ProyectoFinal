@@ -21,11 +21,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "marcas")
 @NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM marcas p"),
-    @NamedQuery(name = "Producto.findById", query = "SELECT p FROM marcas p WHERE p.idMarca = :idMarca"),
-    @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM marcas p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Producto.findByPais", query = "SELECT p FROM marcas p WHERE p.paisOrigen = :paisOrigen"),
-    @NamedQuery(name = "Producto.findByFundacion", query = "SELECT p FROM marcas p WHERE p.fundacion = :fundacion")})
+    @NamedQuery(name = "marcas.findAll", query = "SELECT p FROM marcas p"),
+    @NamedQuery(name = "marcas.findById", query = "SELECT p FROM marcas p WHERE p.idMarca = :idMarca"),
+    @NamedQuery(name = "marcas.findByNombre", query = "SELECT p FROM marcas p WHERE p.nombre = :nombre"),
+    @NamedQuery(name = "marcas.findByPais", query = "SELECT p FROM marcas p WHERE p.paisOrigen = :paisOrigen"),
+    @NamedQuery(name = "marcas.findByFundacion", query = "SELECT p FROM marcas p WHERE p.fundacion = :fundacion")})
 public class Marcas implements Serializable {
 
     private static final long serialVersionUID = 1L;

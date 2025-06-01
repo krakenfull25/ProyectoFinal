@@ -19,10 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "accesorios")
 @NamedQueries({
-    @NamedQuery(name = "Venta.findAll", query = "SELECT v FROM accesorios v"),
-    @NamedQuery(name = "Venta.findById", query = "SELECT v FROM accesorios v WHERE v.idAccesorio = :idAccesorio"),
-    @NamedQuery(name = "Venta.findByFecha", query = "SELECT v FROM accesorios v WHERE v.nombre = :nombre"),
-    @NamedQuery(name = "Venta.findByFecha", query = "SELECT v FROM accesorios v WHERE v.descripcion = :descripcion"),
+    @NamedQuery(name = "accesorios.findAll", query = "SELECT v FROM accesorios v"),
+    @NamedQuery(name = "accesorios.findByNombre", query = "SELECT v FROM accesorios v WHERE v.nombre = :nombre"),
+    @NamedQuery(name = "accesorios.findByDescripcion", query = "SELECT v FROM accesorios v WHERE v.descripcion = :descripcion"),
     })
 public class Accesorios implements Serializable {
 
