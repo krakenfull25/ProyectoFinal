@@ -1,47 +1,42 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package entidades;
 
 import java.io.Serializable;
-import java.time.Year;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Collection;
-
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author jfervic933
+ * @author Julen García
  */
 @Entity
 @Table(name = "coches")
-
-// Las named queries son consultas predefinidas que se pueden usar
-// en el código sin necesidad de escribir la consulta completa
-// Están escritas en el formato JPQL (Java Persistence Query Language)
-// No son objeto de estudio en nuestro curso, pero se incluyen para que
-// veas que existen y que se pueden usar
-// Las siguientes consultas son sencillas y fáciles de entender
 @NamedQueries({
-    @NamedQuery(name = "coches.findAll", query = "SELECT c FROM coches c"),
-    @NamedQuery(name = "coches.findByIdCoche", query = "SELECT c FROM coches c WHERE c.idCoche = :idCoche"),
-    @NamedQuery(name = "coches.findByModelo", query = "SELECT c FROM coches c WHERE c.modelo = :modelo"),
-    @NamedQuery(name = "coches.findByAnio", query = "SELECT c FROM coches c WHERE c.anio = :anio"),
-    @NamedQuery(name = "coches.findByPrecio", query = "SELECT c FROM coches c WHERE c.precio = :precio"),
-    @NamedQuery(name = "coches.findByTipoMotor", query = "SELECT c FROM coches c WHERE c.tipoMotor = :tipoMotor")
-        
-})
+    @NamedQuery(name = "Coches.findAll", query = "SELECT c FROM Coches c"),
+    @NamedQuery(name = "Coches.findByIdCoche", query = "SELECT c FROM Coches c WHERE c.idCoche = :idCoche"),
+    @NamedQuery(name = "Coches.findByModelo", query = "SELECT c FROM Coches c WHERE c.modelo = :modelo"),
+    @NamedQuery(name = "Coches.findByAnio", query = "SELECT c FROM Coches c WHERE c.anio = :anio"),
+    @NamedQuery(name = "Coches.findByPrecio", query = "SELECT c FROM Coches c WHERE c.precio = :precio"),
+    @NamedQuery(name = "Coches.findByTipoMotor", query = "SELECT c FROM Coches c WHERE c.tipoMotor = :tipoMotor")})
 public class Coches implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,44 +47,28 @@ public class Coches implements Serializable {
     private Integer idCoche;
     @Column(name = "modelo")
     private String modelo;
-    @Basic(optional = false)
     @Column(name = "anio")
-    private Year anio;
+    @Temporal(TemporalType.DATE)
+    private Date anio;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio")
-    private double precio;
+    private BigDecimal precio;
     @Column(name = "tipoMotor")
     private String tipoMotor;
-    
-    
-    // Cada Venta tiene un atributo Cliente que realiza esa venta
-    // Relación bidireccional con Venta. Esta entidad no es propietaria
-    // de la relación (no tiene la clave foránea de Venta)
+    @JoinTable(name = "cocheaccesorio", joinColumns = {
+        @JoinColumn(name = "idCoche", referencedColumnName = "idCoche")}, inverseJoinColumns = {
+        @JoinColumn(name = "idAccesorio", referencedColumnName = "idAccesorio")})
+    @ManyToMany
+    private Collection<Accesorios> accesoriosCollection;
     @JoinColumn(name = "idMarca", referencedColumnName = "idMarca")
     @ManyToOne
-    private Integer idMarca;
-
-    public Integer getIdMarca() {
-        return idMarca;
-    }
-
-    public void setIdMarca(Integer idMarca) {
-        this.idMarca = idMarca;
-    }
+    private Marcas idMarca;
 
     public Coches() {
     }
 
-    public Coches(Integer id) {
-        this.idCoche = id;
-    }
-
-    public Coches(Integer idCoche, String modelo, Year anio, double precio, String tipoMotor) {
+    public Coches(Integer idCoche) {
         this.idCoche = idCoche;
-        this.modelo = modelo;
-        this.anio = anio;
-        this.precio = precio;
-        this.tipoMotor = tipoMotor;
-        
     }
 
     public Integer getIdCoche() {
@@ -108,19 +87,19 @@ public class Coches implements Serializable {
         this.modelo = modelo;
     }
 
-    public Year getAnio() {
+    public Date getAnio() {
         return anio;
     }
 
-    public void setAnio(Year anio) {
+    public void setAnio(Date anio) {
         this.anio = anio;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
@@ -132,10 +111,21 @@ public class Coches implements Serializable {
         this.tipoMotor = tipoMotor;
     }
 
-    
+    public Collection<Accesorios> getAccesoriosCollection() {
+        return accesoriosCollection;
+    }
 
-   
+    public void setAccesoriosCollection(Collection<Accesorios> accesoriosCollection) {
+        this.accesoriosCollection = accesoriosCollection;
+    }
 
+    public Marcas getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(Marcas idMarca) {
+        this.idMarca = idMarca;
+    }
 
     @Override
     public int hashCode() {
@@ -146,22 +136,20 @@ public class Coches implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Coches)) {
             return false;
         }
         Coches other = (Coches) object;
-        return !((this.idCoche == null && other.idCoche != null) || (this.idCoche != null && !this.idCoche.equals(other.idCoche)));
+        if ((this.idCoche == null && other.idCoche != null) || (this.idCoche != null && !this.idCoche.equals(other.idCoche))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Coches{" + "idCoche=" + idCoche + ", modelo=" + modelo + ", anio=" + anio + ", precio=" + precio + ", tipoMotor=" + tipoMotor + ", idMarca=" + idMarca + '}';
+        return "entidades.Coches[ idCoche=" + idCoche + " ]";
     }
-
     
-
-    
-    
-    
-  
 }

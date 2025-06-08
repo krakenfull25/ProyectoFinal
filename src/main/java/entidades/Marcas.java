@@ -1,9 +1,12 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package entidades;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.Year;
+import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,20 +15,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author jfervic933
+ * @author Julen García
  */
 @Entity
 @Table(name = "marcas")
 @NamedQueries({
-    @NamedQuery(name = "marcas.findAll", query = "SELECT p FROM marcas p"),
-    @NamedQuery(name = "marcas.findById", query = "SELECT p FROM marcas p WHERE p.idMarca = :idMarca"),
-    @NamedQuery(name = "marcas.findByNombre", query = "SELECT p FROM marcas p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "marcas.findByPais", query = "SELECT p FROM marcas p WHERE p.paisOrigen = :paisOrigen"),
-    @NamedQuery(name = "marcas.findByFundacion", query = "SELECT p FROM marcas p WHERE p.fundacion = :fundacion")})
+    @NamedQuery(name = "Marcas.findAll", query = "SELECT m FROM Marcas m"),
+    @NamedQuery(name = "Marcas.findByIdMarca", query = "SELECT m FROM Marcas m WHERE m.idMarca = :idMarca"),
+    @NamedQuery(name = "Marcas.findByNombre", query = "SELECT m FROM Marcas m WHERE m.nombre = :nombre"),
+    @NamedQuery(name = "Marcas.findByPaisOrigen", query = "SELECT m FROM Marcas m WHERE m.paisOrigen = :paisOrigen"),
+    @NamedQuery(name = "Marcas.findByFundacion", query = "SELECT m FROM Marcas m WHERE m.fundacion = :fundacion")})
 public class Marcas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,28 +45,16 @@ public class Marcas implements Serializable {
     @Column(name = "paisOrigen")
     private String paisOrigen;
     @Column(name = "fundacion")
-    private Year fundacion;
-    
-    // Se omite la relación de Producto hacia detalleVenta para que no sea
-    // bidireccional, simplemente con fines didácticos para que comprobéis
-    // que no siempre es obligatorio que las relaciones sean en ambas direcciones
-    // Al comantar esta relación, no se cargarían los detalleVenta asociados
-    // a este producto
-    //    @OneToMany(mappedBy = "idproducto")
-    //    private Collection<Detalleventa> detalleventaCollection;
-    
+    @Temporal(TemporalType.DATE)
+    private Date fundacion;
+    @OneToMany(mappedBy = "idMarca")
+    private Collection<Coches> cochesCollection;
+
     public Marcas() {
     }
 
-    public Marcas(Integer id) {
-        this.idMarca = id;
-    }
-
-    public Marcas(String nombre, String paisOrigen, Year fundacion) {
-        this.nombre = nombre;
-        this.paisOrigen = paisOrigen;
-        this.fundacion = fundacion;
-//        this.detalleventaCollection = new ArrayList<>();
+    public Marcas(Integer idMarca) {
+        this.idMarca = idMarca;
     }
 
     public Integer getIdMarca() {
@@ -87,23 +81,22 @@ public class Marcas implements Serializable {
         this.paisOrigen = paisOrigen;
     }
 
-    public Year getFundacion() {
+    public Date getFundacion() {
         return fundacion;
     }
 
-    public void setFundacion(Year fundacion) {
+    public void setFundacion(Date fundacion) {
         this.fundacion = fundacion;
     }
 
-    
+    public Collection<Coches> getCochesCollection() {
+        return cochesCollection;
+    }
 
-//    public Collection<Detalleventa> getDetalleventaCollection() {
-//        return detalleventaCollection;
-//    }
-//
-//    public void setDetalleventaCollection(Collection<Detalleventa> detalleventaCollection) {
-//        this.detalleventaCollection = detalleventaCollection;
-//    }
+    public void setCochesCollection(Collection<Coches> cochesCollection) {
+        this.cochesCollection = cochesCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,18 +106,20 @@ public class Marcas implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Marcas)) {
             return false;
         }
         Marcas other = (Marcas) object;
-        return !((this.idMarca == null && other.idMarca != null) || (this.idMarca != null && !this.idMarca.equals(other.idMarca)));
+        if ((this.idMarca == null && other.idMarca != null) || (this.idMarca != null && !this.idMarca.equals(other.idMarca))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Marcas{" + "idMarca=" + idMarca + ", nombre=" + nombre + ", paisOrigen=" + paisOrigen + ", fundacion=" + fundacion + '}';
+        return "entidades.Marcas[ idMarca=" + idMarca + " ]";
     }
-
-   
-
+    
 }
