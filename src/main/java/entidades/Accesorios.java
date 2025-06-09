@@ -13,9 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -41,8 +41,8 @@ public class Accesorios implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-    @ManyToMany(mappedBy = "accesoriosCollection")
-    private Collection<Coches> cochesCollection;
+    @OneToMany(mappedBy = "idAccesorio")
+    private Collection<Cocheaccesorio> cocheaccesorioCollection;
 
     public Accesorios() {
     }
@@ -75,12 +75,12 @@ public class Accesorios implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Collection<Coches> getCochesCollection() {
-        return cochesCollection;
+    public Collection<Cocheaccesorio> getCocheaccesorioCollection() {
+        return cocheaccesorioCollection;
     }
 
-    public void setCochesCollection(Collection<Coches> cochesCollection) {
-        this.cochesCollection = cochesCollection;
+    public void setCocheaccesorioCollection(Collection<Cocheaccesorio> cocheaccesorioCollection) {
+        this.cocheaccesorioCollection = cocheaccesorioCollection;
     }
 
     @Override

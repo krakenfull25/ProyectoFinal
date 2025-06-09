@@ -15,11 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,11 +54,8 @@ public class Coches implements Serializable {
     private BigDecimal precio;
     @Column(name = "tipoMotor")
     private String tipoMotor;
-    @JoinTable(name = "cocheaccesorio", joinColumns = {
-        @JoinColumn(name = "idCoche", referencedColumnName = "idCoche")}, inverseJoinColumns = {
-        @JoinColumn(name = "idAccesorio", referencedColumnName = "idAccesorio")})
-    @ManyToMany
-    private Collection<Accesorios> accesoriosCollection;
+    @OneToMany(mappedBy = "idCoche")
+    private Collection<Cocheaccesorio> cocheaccesorioCollection;
     @JoinColumn(name = "idMarca", referencedColumnName = "idMarca")
     @ManyToOne
     private Marcas idMarca;
@@ -111,12 +107,12 @@ public class Coches implements Serializable {
         this.tipoMotor = tipoMotor;
     }
 
-    public Collection<Accesorios> getAccesoriosCollection() {
-        return accesoriosCollection;
+    public Collection<Cocheaccesorio> getCocheaccesorioCollection() {
+        return cocheaccesorioCollection;
     }
 
-    public void setAccesoriosCollection(Collection<Accesorios> accesoriosCollection) {
-        this.accesoriosCollection = accesoriosCollection;
+    public void setCocheaccesorioCollection(Collection<Cocheaccesorio> cocheaccesorioCollection) {
+        this.cocheaccesorioCollection = cocheaccesorioCollection;
     }
 
     public Marcas getIdMarca() {

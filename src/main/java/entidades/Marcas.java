@@ -27,11 +27,11 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "marcas")
 @NamedQueries({
-    @NamedQuery(name = "Marcas.findAll", query = "SELECT m FROM marcas m"),
-    @NamedQuery(name = "Marcas.findByIdMarca", query = "SELECT m FROM marcas m WHERE m.idMarca = :idMarca"),
-    @NamedQuery(name = "Marcas.findByNombre", query = "SELECT m FROM marcas m WHERE m.nombre = :nombre"),
-    @NamedQuery(name = "Marcas.findByPaisOrigen", query = "SELECT m FROM marcas m WHERE m.paisOrigen = :paisOrigen"),
-    @NamedQuery(name = "Marcas.findByFundacion", query = "SELECT m FROM marcas m WHERE m.fundacion = :fundacion")})
+    @NamedQuery(name = "Marcas.findAll", query = "SELECT m FROM Marcas m"),
+    @NamedQuery(name = "Marcas.findByIdMarca", query = "SELECT m FROM Marcas m WHERE m.idMarca = :idMarca"),
+    @NamedQuery(name = "Marcas.findByNombre", query = "SELECT m FROM Marcas m WHERE m.nombre = :nombre"),
+    @NamedQuery(name = "Marcas.findByPaisOrigen", query = "SELECT m FROM Marcas m WHERE m.paisOrigen = :paisOrigen"),
+    @NamedQuery(name = "Marcas.findByFundacion", query = "SELECT m FROM Marcas m WHERE m.fundacion = :fundacion")})
 public class Marcas implements Serializable {
 
     private static final long serialVersionUID = 1L;
