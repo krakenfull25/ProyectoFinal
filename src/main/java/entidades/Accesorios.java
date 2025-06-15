@@ -7,6 +7,7 @@ package entidades;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,15 +42,18 @@ public class Accesorios implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "idAccesorio")
+    @OneToMany(mappedBy = "idAccesorio", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Cocheaccesorio> cocheaccesorioCollection;
 
     public Accesorios() {
     }
 
-    public Accesorios(Integer idAccesorio) {
-        this.idAccesorio = idAccesorio;
+    public Accesorios(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
+
+    
 
     public Integer getIdAccesorio() {
         return idAccesorio;
@@ -105,7 +109,9 @@ public class Accesorios implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Accesorios[ idAccesorio=" + idAccesorio + " ]";
+        return "Accesorios{" + "idAccesorio=" + idAccesorio + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
+
+    
     
 }

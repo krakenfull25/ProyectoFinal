@@ -72,7 +72,7 @@ public class CochesJpaController {
         EntityManager em = getEntityManager();
         try {
             // Usa la named query definida en la entidad Coches
-            return em.createNamedQuery("coches.findAll", Coches.class).getResultList();
+            return em.createNamedQuery("Coches.findAll", Coches.class).getResultList();
         } finally {
             em.close();
         }

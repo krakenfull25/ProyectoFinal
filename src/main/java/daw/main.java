@@ -4,9 +4,9 @@
  */
 package daw;
 
+import controladores.CochesJpaController;
 import controladores.MarcasJpaController;
-import entidades.Marcas;
-import java.util.List;
+import entidades.Coches;
 
 /**
  *
@@ -14,17 +14,19 @@ import java.util.List;
  */
 public class main {
 
-    private static final MarcasJpaController cc = new MarcasJpaController();
+    private static final CochesJpaController cc = new CochesJpaController();
+    private static final MarcasJpaController cm = new MarcasJpaController();
 
     public static void main(String[] args) {
-        List<Marcas> marcas = cc.findAll();
-        if (marcas.isEmpty()) {
-            System.out.println("No se encontraron marcas en la base de datos.");
-        } else {
-            for (Marcas marca : marcas) {
-                System.out.println(marca);
+        cc.delete(4);
+       cc.findAll().forEach(System.out::println);
+    }
+     
 
-            }
-        }
+    
+
+    public static void mostrarTodosClientes() {
+        cc.findAll().forEach(System.out::println);
+        System.out.println("-------------------------------------------------");
     }
 }

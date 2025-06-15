@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -52,10 +53,10 @@ public class Coches implements Serializable {
 
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio")
-    private BigDecimal precio;
+    private Double precio;
     @Column(name = "tipoMotor")
     private String tipoMotor;
-    @OneToMany(mappedBy = "idCoche")
+    @OneToMany(mappedBy = "idCoche", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Cocheaccesorio> cocheaccesorioCollection;
     @JoinColumn(name = "idMarca", referencedColumnName = "idMarca")
     @ManyToOne
@@ -64,9 +65,15 @@ public class Coches implements Serializable {
     public Coches() {
     }
 
-    public Coches(Integer idCoche) {
-        this.idCoche = idCoche;
+    public Coches(String modelo, Integer anio, Double precio, String tipoMotor, Marcas idMarca) {
+        this.modelo = modelo;
+        this.anio = anio;
+        this.precio = precio;
+        this.tipoMotor = tipoMotor;
+        this.idMarca = idMarca;
     }
+
+    
 
     public Integer getIdCoche() {
         return idCoche;
@@ -92,11 +99,11 @@ public class Coches implements Serializable {
         this.anio = anio;
     }
 
-    public BigDecimal getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -146,7 +153,9 @@ public class Coches implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Coches[ idCoche=" + idCoche + " ]";
+        return "Coches{" + "idCoche=" + idCoche + ", modelo=" + modelo + ", anio=" + anio + ", precio=" + precio + ", tipoMotor=" + tipoMotor + ", idMarca=" + idMarca + '}';
     }
+
+    
 
 }

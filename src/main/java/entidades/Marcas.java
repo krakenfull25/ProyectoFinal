@@ -5,9 +5,10 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -47,15 +46,21 @@ public class Marcas implements Serializable {
     @Column(name = "fundacion")
     
     private Integer fundacion;
-    @OneToMany(mappedBy = "idMarca")
+    @OneToMany(mappedBy = "idMarca",cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Coches> cochesCollection;
 
     public Marcas() {
     }
 
-    public Marcas(Integer idMarca) {
-        this.idMarca = idMarca;
+    public Marcas( String nombre, String paisOrigen, Integer fundacion) {
+        
+        this.nombre = nombre;
+        this.paisOrigen = paisOrigen;
+        this.fundacion = fundacion;
+        this.cochesCollection = new ArrayList<Coches>();
     }
+
+   
 
     public Integer getIdMarca() {
         return idMarca;
@@ -119,7 +124,7 @@ public class Marcas implements Serializable {
 
     @Override
     public String toString() {
-        return "Marcas{" + "idMarca=" + idMarca + ", nombre=" + nombre + ", paisOrigen=" + paisOrigen + ", fundacion=" + fundacion + ", cochesCollection=" + cochesCollection + '}';
+        return "Marcas{" + "idMarca=" + idMarca + ", nombre=" + nombre + ", paisOrigen=" + paisOrigen + ", fundacion=" + fundacion + '}';
     }
 
     

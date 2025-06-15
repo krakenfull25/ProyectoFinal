@@ -24,8 +24,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cocheaccesorio")
 @NamedQueries({
-    @NamedQuery(name = "Cocheaccesorio.findAll", query = "SELECT c FROM Cocheaccesorio c"),
-    @NamedQuery(name = "Cocheaccesorio.findByIdRegistro", query = "SELECT c FROM Cocheaccesorio c WHERE c.idRegistro = :idRegistro")
+    @NamedQuery(name = "Cocheaccesorio.findAll", query = "SELECT ca FROM Cocheaccesorio ca"),
+    @NamedQuery(name = "Cocheaccesorio.findByIdRegistro", query = "SELECT ca FROM Cocheaccesorio ca WHERE ca.idRegistro = :idRegistro")
 })
 
 public class Cocheaccesorio implements Serializable {
@@ -46,9 +46,12 @@ public class Cocheaccesorio implements Serializable {
     public Cocheaccesorio() {
     }
 
-    public Cocheaccesorio(Integer idRegistro) {
-        this.idRegistro = idRegistro;
+    public Cocheaccesorio(Accesorios idAccesorio, Coches idCoche) {
+        this.idAccesorio = idAccesorio;
+        this.idCoche = idCoche;
     }
+
+    
 
     public Integer getIdRegistro() {
         return idRegistro;
@@ -96,7 +99,9 @@ public class Cocheaccesorio implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Cocheaccesorio[ idRegistro=" + idRegistro + " ]";
+        return "Cocheaccesorio{" + "idRegistro=" + idRegistro + ", idAccesorio=" + idAccesorio + ", idCoche=" + idCoche + '}';
     }
+
+    
     
 }
