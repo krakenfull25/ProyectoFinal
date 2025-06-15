@@ -45,8 +45,8 @@ public class Marcas implements Serializable {
     @Column(name = "paisOrigen")
     private String paisOrigen;
     @Column(name = "fundacion")
-    @Temporal(TemporalType.DATE)
-    private Date fundacion;
+    
+    private Integer fundacion;
     @OneToMany(mappedBy = "idMarca")
     private Collection<Coches> cochesCollection;
 
@@ -81,11 +81,11 @@ public class Marcas implements Serializable {
         this.paisOrigen = paisOrigen;
     }
 
-    public Date getFundacion() {
+    public Integer getFundacion() {
         return fundacion;
     }
 
-    public void setFundacion(Date fundacion) {
+    public void setFundacion(Integer fundacion) {
         this.fundacion = fundacion;
     }
 
@@ -119,7 +119,9 @@ public class Marcas implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Marcas[ idMarca=" + idMarca + " ]";
+        return "Marcas{" + "idMarca=" + idMarca + ", nombre=" + nombre + ", paisOrigen=" + paisOrigen + ", fundacion=" + fundacion + ", cochesCollection=" + cochesCollection + '}';
     }
+
+    
     
 }

@@ -47,8 +47,9 @@ public class Coches implements Serializable {
     @Column(name = "modelo")
     private String modelo;
     @Column(name = "anio")
-    @Temporal(TemporalType.DATE)
-    private Date anio;
+
+    private Integer anio;
+
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio")
     private BigDecimal precio;
@@ -83,11 +84,11 @@ public class Coches implements Serializable {
         this.modelo = modelo;
     }
 
-    public Date getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
-    public void setAnio(Date anio) {
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
 
@@ -147,5 +148,5 @@ public class Coches implements Serializable {
     public String toString() {
         return "entidades.Coches[ idCoche=" + idCoche + " ]";
     }
-    
+
 }

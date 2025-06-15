@@ -72,7 +72,8 @@ public class MarcasJpaController {
         EntityManager em = getEntityManager();
         try {
             // Usa la named query definida en la entidad Marcas
-            return em.createNamedQuery("marcas.findAll", Marcas.class).getResultList();
+            return em.createNamedQuery("Marcas.findAll", Marcas.class).getResultList();
+
         } finally {
             em.close();
         }

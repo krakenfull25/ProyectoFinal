@@ -25,7 +25,9 @@ import javax.persistence.Table;
 @Table(name = "cocheaccesorio")
 @NamedQueries({
     @NamedQuery(name = "Cocheaccesorio.findAll", query = "SELECT c FROM Cocheaccesorio c"),
-    @NamedQuery(name = "Cocheaccesorio.findByIdRegistro", query = "SELECT c FROM Cocheaccesorio c WHERE c.idRegistro = :idRegistro")})
+    @NamedQuery(name = "Cocheaccesorio.findByIdRegistro", query = "SELECT c FROM Cocheaccesorio c WHERE c.idRegistro = :idRegistro")
+})
+
 public class Cocheaccesorio implements Serializable {
 
     private static final long serialVersionUID = 1L;

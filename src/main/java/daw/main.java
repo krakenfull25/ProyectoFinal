@@ -4,14 +4,27 @@
  */
 package daw;
 
-import dao.MarcasDao;
+import controladores.MarcasJpaController;
+import entidades.Marcas;
+import java.util.List;
 
 /**
  *
  * @author Julen García
  */
 public class main {
+
+    private static final MarcasJpaController cc = new MarcasJpaController();
+
     public static void main(String[] args) {
-        MarcasDao.mostrarTodosClientes();
+        List<Marcas> marcas = cc.findAll();
+        if (marcas.isEmpty()) {
+            System.out.println("No se encontraron marcas en la base de datos.");
+        } else {
+            for (Marcas marca : marcas) {
+                System.out.println(marca);
+
+            }
+        }
     }
 }
