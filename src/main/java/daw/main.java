@@ -7,6 +7,7 @@ package daw;
 import controladores.CochesJpaController;
 import controladores.MarcasJpaController;
 import entidades.Coches;
+import entidades.Marcas;
 
 /**
  *
@@ -18,15 +19,15 @@ public class main {
     private static final MarcasJpaController cm = new MarcasJpaController();
 
     public static void main(String[] args) {
-        cc.delete(4);
-       cc.findAll().forEach(System.out::println);
+       cm.create(new Marcas("maserati", "rumania", 2012));
+       mostrarTodosClientes();
     }
      
 
     
 
     public static void mostrarTodosClientes() {
-        cc.findAll().forEach(System.out::println);
+        cm.findAll().forEach(System.out::println);
         System.out.println("-------------------------------------------------");
     }
 }

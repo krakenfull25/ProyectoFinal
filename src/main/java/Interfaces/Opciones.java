@@ -31,10 +31,11 @@ public class Opciones extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        botonCochesAcce = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
         botonMarcas = new javax.swing.JButton();
         botonAccesorios = new javax.swing.JButton();
         botonCoches = new javax.swing.JButton();
+        botonCochesAcce1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,29 +59,60 @@ public class Opciones extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/coche accesorios.PNG"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 140, 50));
 
-        botonCochesAcce.setBackground(new java.awt.Color(102, 204, 255));
-        botonCochesAcce.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        botonCochesAcce.setForeground(new java.awt.Color(255, 255, 255));
-        botonCochesAcce.setText("Accesorios de cada coche");
-        getContentPane().add(botonCochesAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 170, 50));
+        botonSalir.setBackground(new java.awt.Color(102, 204, 255));
+        botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 150, 30));
 
         botonMarcas.setBackground(new java.awt.Color(102, 204, 255));
         botonMarcas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonMarcas.setForeground(new java.awt.Color(255, 255, 255));
         botonMarcas.setText("Marcas");
+        botonMarcas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMarcasActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 170, 40));
 
         botonAccesorios.setBackground(new java.awt.Color(102, 204, 255));
         botonAccesorios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonAccesorios.setForeground(new java.awt.Color(255, 255, 255));
         botonAccesorios.setText("Accesorios");
+        botonAccesorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAccesoriosActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonAccesorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 170, 40));
 
         botonCoches.setBackground(new java.awt.Color(102, 204, 255));
         botonCoches.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonCoches.setForeground(new java.awt.Color(255, 255, 255));
         botonCoches.setText("Coches");
+        botonCoches.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCochesActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonCoches, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 170, 40));
+
+        botonCochesAcce1.setBackground(new java.awt.Color(102, 204, 255));
+        botonCochesAcce1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonCochesAcce1.setForeground(new java.awt.Color(255, 255, 255));
+        botonCochesAcce1.setText("Accesorios de cada coche");
+        botonCochesAcce1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCochesAcce1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCochesAcce1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 170, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/opciones.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -88,31 +120,56 @@ public class Opciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMarcasActionPerformed
+        // TODO add your handling code here:
+        menuMarcas marcas = new menuMarcas();
+        marcas.setLocationRelativeTo(null); 
+        marcas.setResizable(false);
+        marcas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonMarcasActionPerformed
+
+    private void botonCochesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCochesActionPerformed
+        // TODO add your handling code here:
+        menuCoches coches = new menuCoches();
+        coches.setLocationRelativeTo(null); 
+        coches.setResizable(false);
+        coches.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonCochesActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonAccesoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAccesoriosActionPerformed
+        // TODO add your handling code here:
+        menuAccesorios accesorios = new menuAccesorios();
+        accesorios.setLocationRelativeTo(null); 
+        accesorios.setResizable(false);
+        accesorios.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAccesoriosActionPerformed
+
+    private void botonCochesAcce1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCochesAcce1ActionPerformed
+        // TODO add your handling code here:
+        menuCocheAcce cocheAcce = new menuCocheAcce();
+        cocheAcce.setLocationRelativeTo(null);
+        cocheAcce.setResizable(false);
+        cocheAcce.setVisible(true);
+    }//GEN-LAST:event_botonCochesAcce1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    private void BotonAccesoriosPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new menuAccesorios().setVisible(true);
-    } 
 
-    private void BotonCochesActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new menuCoches().setVisible(true);
-    } 
-    private void BotonCochesAccerActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new menuCocheAcce().setVisible(true);
-    } 
-    private void BotonMarcasActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new menuMarcas().setVisible(true);
-    } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAccesorios;
     private javax.swing.JButton botonCoches;
-    private javax.swing.JButton botonCochesAcce;
+    private javax.swing.JButton botonCochesAcce1;
     private javax.swing.JButton botonMarcas;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

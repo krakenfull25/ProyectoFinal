@@ -77,7 +77,11 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirInicioActionPerformed
 
     private void botonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAccederActionPerformed
-         new Opciones().setVisible(true);
+        Opciones opciones = new Opciones();
+        opciones.setLocationRelativeTo(null);
+        opciones.setVisible(true);
+        opciones.setResizable(false);
+        this.dispose();
     }//GEN-LAST:event_botonAccederActionPerformed
 
     /**
@@ -110,7 +114,10 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                Inicio inicio = new Inicio();
+                inicio.setLocationRelativeTo(null);
+                inicio.setResizable(false);
+                inicio.setVisible(true);
             }
         });
     }

@@ -53,6 +53,12 @@ public class Accesorios implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public Accesorios(Integer idAccesorio, String nombre, String descripcion) {
+        this.idAccesorio = idAccesorio;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
     
 
     public Integer getIdAccesorio() {

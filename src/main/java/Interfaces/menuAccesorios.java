@@ -4,17 +4,27 @@
  */
 package Interfaces;
 
+import controladores.AccesoriosJpaController;
+import entidades.Accesorios;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Julen García
  */
 public class menuAccesorios extends javax.swing.JFrame {
 
+    private AccesoriosJpaController ac = new AccesoriosJpaController();
+
     /**
      * Creates new form menuAccesorios
      */
     public menuAccesorios() {
         initComponents();
+        cargarDatosJTable();
     }
 
     /**
@@ -26,38 +36,201 @@ public class menuAccesorios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btDelAcce = new javax.swing.JButton();
+        btAñadirAcce = new javax.swing.JButton();
+        btVolver = new javax.swing.JButton();
+        btModAcce = new javax.swing.JButton();
+        btDelTodosAcce1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contAcce = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
+        btDelAcce.setBackground(new java.awt.Color(255, 0, 0));
+        btDelAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btDelAcce.setText("Eliminar Accesorio");
+        btDelAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 160, 35));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(121, 121, 121))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jButton1)
-                .addContainerGap(169, Short.MAX_VALUE))
-        );
+        btAñadirAcce.setBackground(new java.awt.Color(255, 0, 0));
+        btAñadirAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btAñadirAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btAñadirAcce.setText("Añadir Accesorio");
+        btAñadirAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAñadirAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btAñadirAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, 35));
+
+        btVolver.setBackground(new java.awt.Color(255, 0, 0));
+        btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 35));
+
+        btModAcce.setBackground(new java.awt.Color(255, 0, 0));
+        btModAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btModAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btModAcce.setText("Modificar Accesorio");
+        btModAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btModAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 160, 35));
+
+        btDelTodosAcce1.setBackground(new java.awt.Color(255, 0, 0));
+        btDelTodosAcce1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelTodosAcce1.setForeground(new java.awt.Color(0, 0, 0));
+        btDelTodosAcce1.setText("Eliminar todos");
+        btDelTodosAcce1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelTodosAcce1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelTodosAcce1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 160, 35));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel2.setText("Accesorios");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 220, 70));
+
+        contAcce.setBackground(new java.awt.Color(255, 51, 51));
+        contAcce.setForeground(new java.awt.Color(0, 0, 0));
+        contAcce.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(contAcce);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 430, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAcce.PNG"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btDelAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelAcceActionPerformed
+        // TODO add your handling code here:
+        String idStr = JOptionPane.showInputDialog("Introduce la id del acceosorio que quieras borrar.");
+        try {
+            int id = Integer.parseInt(idStr);
+
+            if (id < 1) {
+                JOptionPane.showMessageDialog(null, "ID inválida.");
+                return;
+            }
+
+            ac.delete(id);
+
+            cargarDatosJTable();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
+
+        }
+    }//GEN-LAST:event_btDelAcceActionPerformed
+
+    private void btAñadirAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirAcceActionPerformed
+        // TODO add your handling code here:
+        new añadirAcce(this, true).setVisible(true);
+           
+            cargarDatosJTable();
+    }//GEN-LAST:event_btAñadirAcceActionPerformed
+
+    private void btModAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModAcceActionPerformed
+        // TODO add your handling code here:
+         if (contAcce.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
+        } else {
+            
+            new modAccesorio(this, true).setVisible(true);
+           
+            cargarDatosJTable();
+        }
+    }//GEN-LAST:event_btModAcceActionPerformed
+
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Opciones opciones = new Opciones();
+        opciones.setLocationRelativeTo(null);
+        opciones.setResizable(false);
+        opciones.setVisible(true);
+
+    }//GEN-LAST:event_btVolverActionPerformed
+
+    private void btDelTodosAcce1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosAcce1ActionPerformed
+        // TODO add your handling code here:
+        ac.deleteAll();
+        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
+        cargarDatosJTable();
+    }//GEN-LAST:event_btDelTodosAcce1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-   
+    private void cargarDatosJTable() {
+
+        List<Accesorios> accesorios = ac.findAll();
+        String[] columnas = {"IdAccesorio", "Nombre", "Accesorio"};
+        DefaultTableModel columnModel = new DefaultTableModel(columnas, 0);
+
+        int numColumnas = columnModel.getColumnCount();
+
+        Object[] fila = new Object[numColumnas];
+
+        for (Accesorios accesorio : accesorios) {
+            fila[0] = accesorio.getIdAccesorio();
+            fila[1] = accesorio.getNombre();
+            fila[2] = accesorio.getDescripcion();
+
+            columnModel.addRow(fila);
+        }
+        contAcce.setModel(columnModel);
+
+    }
+    public JTable getJTable() {
+        return this.contAcce;
+    }
+
+    public AccesoriosJpaController getAc() {
+        return ac;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btAñadirAcce;
+    private javax.swing.JButton btDelAcce;
+    private javax.swing.JButton btDelTodosAcce1;
+    private javax.swing.JButton btModAcce;
+    private javax.swing.JButton btVolver;
+    private javax.swing.JTable contAcce;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

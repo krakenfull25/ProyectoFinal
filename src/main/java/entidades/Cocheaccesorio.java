@@ -37,7 +37,7 @@ public class Cocheaccesorio implements Serializable {
     @Column(name = "idRegistro")
     private Integer idRegistro;
     @JoinColumn(name = "idAccesorio", referencedColumnName = "idAccesorio")
-    @ManyToOne
+    @ManyToOne(optional = true)
     private Accesorios idAccesorio;
     @JoinColumn(name = "idCoche", referencedColumnName = "idCoche")
     @ManyToOne
