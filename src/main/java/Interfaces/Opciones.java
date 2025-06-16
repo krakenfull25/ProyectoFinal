@@ -91,8 +91,23 @@ public class Opciones extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+    private void BotonAccesoriosPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        new menuAccesorios().setVisible(true);
+    } 
 
+    private void BotonCochesActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        new menuCoches().setVisible(true);
+    } 
+    private void BotonCochesAccerActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        new menuCocheAcce().setVisible(true);
+    } 
+    private void BotonMarcasActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        new menuMarcas().setVisible(true);
+    } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAccesorios;
     private javax.swing.JButton botonCoches;

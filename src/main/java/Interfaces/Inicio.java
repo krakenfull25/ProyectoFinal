@@ -62,7 +62,7 @@ public class Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(botonSalirInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 190, 90));
 
-        jLabel3.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        jLabel3.setForeground(new java.awt.Color(255, 153, 51));
         jLabel3.setText("Julen García Vázquez 1ºDAW");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
