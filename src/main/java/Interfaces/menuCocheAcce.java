@@ -26,21 +26,158 @@ public class menuCocheAcce extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel2 = new javax.swing.JLabel();
+        btDelCocheAcce = new javax.swing.JButton();
+        btAñadirCocheAcce = new javax.swing.JButton();
+        btVolver = new javax.swing.JButton();
+        btModCocheAcce = new javax.swing.JButton();
+        btDelTodosCocheAcce = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contCocheAcce = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel2.setText("Accesorios de los coches");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 400, 70));
+
+        btDelCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
+        btDelCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btDelCocheAcce.setText("Quitar acce. de un coche");
+        btDelCocheAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelCocheAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, 35));
+
+        btAñadirCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
+        btAñadirCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btAñadirCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btAñadirCocheAcce.setText("Vincular acce. a un coche ");
+        btAñadirCocheAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAñadirCocheAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btAñadirCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 35));
+
+        btVolver.setBackground(new java.awt.Color(0, 153, 153));
+        btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 160, 35));
+
+        btModCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
+        btModCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btModCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btModCocheAcce.setText("Mod. acce. de un coche");
+        btModCocheAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModCocheAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btModCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 35));
+
+        btDelTodosCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
+        btDelTodosCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelTodosCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
+        btDelTodosCocheAcce.setText("Eliminar todos");
+        btDelTodosCocheAcce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelTodosCocheAcceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelTodosCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 200, 35));
+
+        contCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
+        contCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
+        contCocheAcce.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(contCocheAcce);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 380, 260));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/taller.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btDelCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelCocheAcceActionPerformed
+        // TODO add your handling code here:
+        String idStr = JOptionPane.showInputDialog("Introduce la id del acceosorio que quieras borrar.");
+        try {
+            int id = Integer.parseInt(idStr);
+
+            if (id < 1) {
+                JOptionPane.showMessageDialog(null, "ID inválida.");
+                return;
+            }
+
+            ac.delete(id);
+
+            cargarDatosJTable();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
+
+        }
+    }//GEN-LAST:event_btDelCocheAcceActionPerformed
+
+    private void btAñadirCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirCocheAcceActionPerformed
+        // TODO add your handling code here:
+        new añadirAcce(this, true).setVisible(true);
+
+        cargarDatosJTable();
+    }//GEN-LAST:event_btAñadirCocheAcceActionPerformed
+
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Opciones opciones = new Opciones();
+        opciones.setLocationRelativeTo(null);
+        opciones.setResizable(false);
+        opciones.setVisible(true);
+    }//GEN-LAST:event_btVolverActionPerformed
+
+    private void btModCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModCocheAcceActionPerformed
+        // TODO add your handling code here:
+        if (contCocheAcce.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
+        } else {
+
+            new modAccesorio(this, true).setVisible(true);
+
+            cargarDatosJTable();
+        }
+    }//GEN-LAST:event_btModCocheAcceActionPerformed
+
+    private void btDelTodosCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosCocheAcceActionPerformed
+        // TODO add your handling code here:
+        ac.deleteAll();
+        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
+        cargarDatosJTable();
+    }//GEN-LAST:event_btDelTodosCocheAcceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -48,5 +185,14 @@ public class menuCocheAcce extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAñadirCocheAcce;
+    private javax.swing.JButton btDelCocheAcce;
+    private javax.swing.JButton btDelTodosCocheAcce;
+    private javax.swing.JButton btModCocheAcce;
+    private javax.swing.JButton btVolver;
+    private javax.swing.JTable contCocheAcce;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
