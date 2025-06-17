@@ -51,6 +51,12 @@ public class Cocheaccesorio implements Serializable {
         this.idCoche = idCoche;
     }
 
+    public Cocheaccesorio(Integer idRegistro, Accesorios idAccesorio, Coches idCoche) {
+        this.idRegistro = idRegistro;
+        this.idAccesorio = idAccesorio;
+        this.idCoche = idCoche;
+    }
+
     
 
     public Integer getIdRegistro() {

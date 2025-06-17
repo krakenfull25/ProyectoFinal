@@ -156,19 +156,25 @@ public class menuAccesorios extends javax.swing.JFrame {
 
     private void btAñadirAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirAcceActionPerformed
         // TODO add your handling code here:
-        new añadirAcce(this, true).setVisible(true);
-           
-            cargarDatosJTable();
+        añadirAcce acce = new añadirAcce(this, true);
+        acce.setLocationRelativeTo(null);
+        acce.setResizable(false);
+        acce.setVisible(true);
+
+        cargarDatosJTable();
     }//GEN-LAST:event_btAñadirAcceActionPerformed
 
     private void btModAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModAcceActionPerformed
         // TODO add your handling code here:
-         if (contAcce.getSelectedRow() < 0) {
+        if (contAcce.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
         } else {
-            
-            new modAccesorio(this, true).setVisible(true);
-           
+
+            modAccesorio acce = new modAccesorio(this, true);
+            acce.setLocationRelativeTo(null);
+            acce.setResizable(false);
+            acce.setVisible(true);
+
             cargarDatosJTable();
         }
     }//GEN-LAST:event_btModAcceActionPerformed
@@ -213,6 +219,7 @@ public class menuAccesorios extends javax.swing.JFrame {
         contAcce.setModel(columnModel);
 
     }
+
     public JTable getJTable() {
         return this.contAcce;
     }

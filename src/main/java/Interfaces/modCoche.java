@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import controladores.MarcasJpaController;
+import entidades.Coches;
 import entidades.Marcas;
 import java.awt.Color;
 import javax.swing.JTable;
@@ -12,15 +14,16 @@ import javax.swing.JTable;
  *
  * @author Julen García
  */
-public class modMarca extends javax.swing.JDialog {
-    private menuMarcas padre;
-    private Marcas marca;
+public class modCoche extends javax.swing.JDialog {
+    private menuCoches padre;
+    private Coches coche;
+    private MarcasJpaController mc = new MarcasJpaController();
     /**
      * Creates new form modMarca
      * @param parent
      * @param modal
      */
-    public modMarca(menuMarcas parent, boolean modal) {
+    public modCoche(menuCoches parent, boolean modal) {
         super(parent, modal);
         padre = parent;
         initComponents();
@@ -37,23 +40,27 @@ public class modMarca extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nombreMarca = new javax.swing.JTextField();
+        modeloCoche = new javax.swing.JTextField();
         btCancelar = new javax.swing.JButton();
         btActualizar = new javax.swing.JButton();
-        paisMarca = new javax.swing.JTextField();
+        anioCoche = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        idMarca = new javax.swing.JTextField();
-        funMarca = new javax.swing.JTextField();
+        idCoche = new javax.swing.JTextField();
+        precioCoche = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        tipoMotorCoche = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        idMarcaCoche = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Modelo");
 
-        nombreMarca.addActionListener(new java.awt.event.ActionListener() {
+        modeloCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreMarcaActionPerformed(evt);
+                modeloCocheActionPerformed(evt);
             }
         });
 
@@ -71,30 +78,46 @@ public class modMarca extends javax.swing.JDialog {
             }
         });
 
-        paisMarca.addActionListener(new java.awt.event.ActionListener() {
+        anioCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paisMarcaActionPerformed(evt);
+                anioCocheActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Pais de origen");
+        jLabel2.setText("Año");
 
         jLabel3.setText("Id");
 
-        idMarca.setEditable(false);
-        idMarca.addActionListener(new java.awt.event.ActionListener() {
+        idCoche.setEditable(false);
+        idCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idMarcaActionPerformed(evt);
+                idCocheActionPerformed(evt);
             }
         });
 
-        funMarca.addActionListener(new java.awt.event.ActionListener() {
+        precioCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funMarcaActionPerformed(evt);
+                precioCocheActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Fundacion");
+        jLabel4.setText("Precio");
+
+        tipoMotorCoche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoMotorCocheActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Tipo de motor");
+
+        idMarcaCoche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idMarcaCocheActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Id Marca");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,20 +138,31 @@ public class modMarca extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(idMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                    .addComponent(nombreMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(paisMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(funMarca, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(idCoche, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                    .addComponent(modeloCoche, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(anioCoche, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(precioCoche, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                                 .addComponent(btCancelar)
                                 .addGap(58, 58, 58))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(66, 66, 66)
+                                .addComponent(idMarcaCoche))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tipoMotorCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,20 +170,28 @@ public class modMarca extends javax.swing.JDialog {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(idMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modeloCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(paisMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(anioCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(funMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                    .addComponent(precioCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tipoMotorCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(idMarcaCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar)
                     .addComponent(btActualizar))
@@ -159,9 +201,9 @@ public class modMarca extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreMarcaActionPerformed
+    private void modeloCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloCocheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreMarcaActionPerformed
+    }//GEN-LAST:event_modeloCocheActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
@@ -170,25 +212,36 @@ public class modMarca extends javax.swing.JDialog {
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
         // TODO add your handling code here:
-        String nombre = nombreMarca.getText();
-        String pais = paisMarca.getText();
-        int fundacion = Integer.parseInt(funMarca.getText());
-        padre.getMc().update(new Marcas(marca.getIdMarca(),nombre,pais,fundacion));
+        String modelo = modeloCoche.getText();
+        int anio = Integer.parseInt(anioCoche.getText());
+        double precio = Double.parseDouble(precioCoche.getText());
+        String tipMotor = tipoMotorCoche.getText();
+        int idMarcCoche = Integer.parseInt(this.idMarcaCoche.getText());
+        
+        padre.getCc().update(new Coches(coche.getIdCoche(),modelo, anio , precio, tipMotor, mc.findById(idMarcCoche)));
         mostrarDatosEditar();
         this.dispose();
     }//GEN-LAST:event_btActualizarActionPerformed
 
-    private void paisMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisMarcaActionPerformed
+    private void anioCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioCocheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_paisMarcaActionPerformed
+    }//GEN-LAST:event_anioCocheActionPerformed
 
-    private void idMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMarcaActionPerformed
+    private void idCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCocheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idMarcaActionPerformed
+    }//GEN-LAST:event_idCocheActionPerformed
 
-    private void funMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funMarcaActionPerformed
+    private void precioCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCocheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_funMarcaActionPerformed
+    }//GEN-LAST:event_precioCocheActionPerformed
+
+    private void tipoMotorCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMotorCocheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoMotorCocheActionPerformed
+
+    private void idMarcaCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMarcaCocheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idMarcaCocheActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,16 +254,16 @@ public class modMarca extends javax.swing.JDialog {
         // es el valor de la columna cero (según mi modelo) de esa fila
         int id = (int) padre.getJTable().getValueAt(fila, 0);
         // Guarda la persona seleccionada
-        this.marca = padre.getMc().findById(id);
+        this.coche = padre.getCc().findById(id);
         // Muestra datos de la persona que se seleccionó en el jtable
         // en los jtextfield
-        String idtext = this.marca.getIdMarca()+ "";
-        String fundacion = this.marca.getFundacion()+"";
-        this.idMarca.setBackground(Color.GRAY);
-        this.idMarca.setText(idtext);
-        this.nombreMarca.setText(this.marca.getNombre());
-        this.paisMarca.setText(this.marca.getPaisOrigen());
-        this.funMarca.setText(fundacion);
+        String idtext = this.coche.getIdMarca()+ "";
+        String fundacion = this.coche.getAnio()+"";
+        this.idCoche.setBackground(Color.GRAY);
+        this.idCoche.setText(idtext);
+        this.modeloCoche.setText(this.coche.getModelo());
+        this.anioCoche.setText(this.coche.getPaisOrigen());
+        this.precioCoche.setText(fundacion);
     }
     private int filaSeleccionadaJTable(JTable jTable1) {
         int fila = jTable1.getSelectedRow();
@@ -218,15 +271,19 @@ public class modMarca extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField anioCoche;
     private javax.swing.JButton btActualizar;
     private javax.swing.JButton btCancelar;
-    private javax.swing.JTextField funMarca;
-    private javax.swing.JTextField idMarca;
+    private javax.swing.JTextField idCoche;
+    private javax.swing.JTextField idMarcaCoche;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField nombreMarca;
-    private javax.swing.JTextField paisMarca;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField modeloCoche;
+    private javax.swing.JTextField precioCoche;
+    private javax.swing.JTextField tipoMotorCoche;
     // End of variables declaration//GEN-END:variables
 }

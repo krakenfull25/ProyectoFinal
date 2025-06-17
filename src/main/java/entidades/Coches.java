@@ -5,9 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -66,6 +62,15 @@ public class Coches implements Serializable {
     }
 
     public Coches(String modelo, Integer anio, Double precio, String tipoMotor, Marcas idMarca) {
+        this.modelo = modelo;
+        this.anio = anio;
+        this.precio = precio;
+        this.tipoMotor = tipoMotor;
+        this.idMarca = idMarca;
+    }
+
+    public Coches(Integer idCoche, String modelo, Integer anio, Double precio, String tipoMotor, Marcas idMarca) {
+        this.idCoche = idCoche;
         this.modelo = modelo;
         this.anio = anio;
         this.precio = precio;

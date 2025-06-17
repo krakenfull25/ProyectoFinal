@@ -16,8 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Julen García
  */
 public class menuMarcas extends javax.swing.JFrame {
-    
+
     private MarcasJpaController mc = new MarcasJpaController();
+
     /**
      * Creates new form menuMarcas
      */
@@ -155,7 +156,10 @@ public class menuMarcas extends javax.swing.JFrame {
 
     private void btAñadirMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirMarcaActionPerformed
         // TODO add your handling code here:
-        new añadirMarca(this, true).setVisible(true);
+        añadirMarca marca = new añadirMarca(this, true);
+        marca.setLocationRelativeTo(null);
+        marca.setResizable(false);
+        marca.setVisible(true);
 
         cargarDatosJTable();
     }//GEN-LAST:event_btAñadirMarcaActionPerformed
@@ -175,7 +179,10 @@ public class menuMarcas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
         } else {
 
-            new modMarca(this, true).setVisible(true);
+            modMarca marca = new modMarca(this, true);
+            marca.setLocationRelativeTo(null);
+            marca.setResizable(false);
+            marca.setVisible(true);
 
             cargarDatosJTable();
         }
@@ -187,11 +194,11 @@ public class menuMarcas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
         cargarDatosJTable();
     }//GEN-LAST:event_btDelTodasMarcasActionPerformed
-    
+
     private void cargarDatosJTable() {
 
         List<Marcas> marcas = mc.findAll();
-        String[] columnas = {"IdMarca", "Nombre", "Pais de origen","Fundacion"};
+        String[] columnas = {"IdMarca", "Nombre", "Pais de origen", "Fundacion"};
         DefaultTableModel columnModel = new DefaultTableModel(columnas, 0);
 
         int numColumnas = columnModel.getColumnCount();
@@ -209,6 +216,7 @@ public class menuMarcas extends javax.swing.JFrame {
         contMarcas.setModel(columnModel);
 
     }
+
     public JTable getJTable() {
         return this.contMarcas;
     }
@@ -219,7 +227,7 @@ public class menuMarcas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadirMarca;
