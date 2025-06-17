@@ -19,8 +19,9 @@ public class modMarca extends javax.swing.JDialog {
     /**
      * Creates new form modMarca
      */
-    public modMarca(java.awt.Frame parent, boolean modal) {
+    public modMarca(menuMarcas parent, boolean modal) {
         super(parent, modal);
+        padre = parent;
         initComponents();
     }
 
