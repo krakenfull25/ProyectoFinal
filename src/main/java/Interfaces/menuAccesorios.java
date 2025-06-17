@@ -196,7 +196,7 @@ public class menuAccesorios extends javax.swing.JFrame {
     private void cargarDatosJTable() {
 
         List<Accesorios> accesorios = ac.findAll();
-        String[] columnas = {"IdAccesorio", "Nombre", "Accesorio"};
+        String[] columnas = {"IdAccesorio", "Nombre", "Descripcion"};
         DefaultTableModel columnModel = new DefaultTableModel(columnas, 0);
 
         int numColumnas = columnModel.getColumnCount();

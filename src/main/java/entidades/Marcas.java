@@ -60,6 +60,13 @@ public class Marcas implements Serializable {
         this.cochesCollection = new ArrayList<Coches>();
     }
 
+    public Marcas(Integer idMarca, String nombre, String paisOrigen, Integer fundacion) {
+        this.idMarca = idMarca;
+        this.nombre = nombre;
+        this.paisOrigen = paisOrigen;
+        this.fundacion = fundacion;
+    }
+
    
 
     public Integer getIdMarca() {

@@ -124,59 +124,59 @@ public class menuCocheAcce extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDelCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelCocheAcceActionPerformed
-        // TODO add your handling code here:
-        String idStr = JOptionPane.showInputDialog("Introduce la id del acceosorio que quieras borrar.");
-        try {
-            int id = Integer.parseInt(idStr);
-
-            if (id < 1) {
-                JOptionPane.showMessageDialog(null, "ID inválida.");
-                return;
-            }
-
-            ac.delete(id);
-
-            cargarDatosJTable();
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
-
-        }
+//        // TODO add your handling code here:
+//        String idStr = JOptionPane.showInputDialog("Introduce la id del acceosorio que quieras borrar.");
+//        try {
+//            int id = Integer.parseInt(idStr);
+//
+//            if (id < 1) {
+//                JOptionPane.showMessageDialog(null, "ID inválida.");
+//                return;
+//            }
+//
+//            ac.delete(id);
+//
+//            cargarDatosJTable();
+//
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
+//
+//        }
     }//GEN-LAST:event_btDelCocheAcceActionPerformed
 
     private void btAñadirCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirCocheAcceActionPerformed
         // TODO add your handling code here:
-        new añadirAcce(this, true).setVisible(true);
-
-        cargarDatosJTable();
+//        new añadirAcce(this, true).setVisible(true);
+//
+//        cargarDatosJTable();
     }//GEN-LAST:event_btAñadirCocheAcceActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        Opciones opciones = new Opciones();
-        opciones.setLocationRelativeTo(null);
-        opciones.setResizable(false);
-        opciones.setVisible(true);
+//        this.dispose();
+//        Opciones opciones = new Opciones();
+//        opciones.setLocationRelativeTo(null);
+//        opciones.setResizable(false);
+//        opciones.setVisible(true);
     }//GEN-LAST:event_btVolverActionPerformed
 
     private void btModCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModCocheAcceActionPerformed
         // TODO add your handling code here:
-        if (contCocheAcce.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
-        } else {
-
-            new modAccesorio(this, true).setVisible(true);
-
-            cargarDatosJTable();
-        }
+//        if (contCocheAcce.getSelectedRow() < 0) {
+//            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
+//        } else {
+//
+//            new modAccesorio(this, true).setVisible(true);
+//
+//            cargarDatosJTable();
+//        }
     }//GEN-LAST:event_btModCocheAcceActionPerformed
 
     private void btDelTodosCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosCocheAcceActionPerformed
         // TODO add your handling code here:
-        ac.deleteAll();
-        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
-        cargarDatosJTable();
+//        ac.deleteAll();
+//        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
+//        cargarDatosJTable();
     }//GEN-LAST:event_btDelTodosCocheAcceActionPerformed
 
     /**

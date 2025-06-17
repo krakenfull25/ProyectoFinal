@@ -4,17 +4,26 @@
  */
 package Interfaces;
 
+import controladores.MarcasJpaController;
+import entidades.Marcas;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Julen García
  */
 public class menuMarcas extends javax.swing.JFrame {
-
+    
+    private MarcasJpaController mc = new MarcasJpaController();
     /**
      * Creates new form menuMarcas
      */
     public menuMarcas() {
         initComponents();
+        cargarDatosJTable();
     }
 
     /**
@@ -26,10 +35,96 @@ public class menuMarcas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        btDelMarca = new javax.swing.JButton();
+        btAñadirMarca = new javax.swing.JButton();
+        btVolver = new javax.swing.JButton();
+        btModMarca = new javax.swing.JButton();
+        btDelTodasMarcas = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contMarcas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 0, 102));
+        jLabel2.setText("Marcas");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 400, 70));
+
+        btDelMarca.setBackground(new java.awt.Color(204, 0, 102));
+        btDelMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelMarca.setForeground(new java.awt.Color(0, 0, 0));
+        btDelMarca.setText("Eliminar marca");
+        btDelMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelMarcaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 150, 35));
+
+        btAñadirMarca.setBackground(new java.awt.Color(204, 0, 102));
+        btAñadirMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btAñadirMarca.setForeground(new java.awt.Color(0, 0, 0));
+        btAñadirMarca.setText("Añadir marca");
+        btAñadirMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAñadirMarcaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btAñadirMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 150, 35));
+
+        btVolver.setBackground(new java.awt.Color(204, 0, 102));
+        btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 130, 35));
+
+        btModMarca.setBackground(new java.awt.Color(204, 0, 102));
+        btModMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btModMarca.setForeground(new java.awt.Color(0, 0, 0));
+        btModMarca.setText("Modificar marca");
+        btModMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModMarcaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btModMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 150, 35));
+
+        btDelTodasMarcas.setBackground(new java.awt.Color(204, 0, 102));
+        btDelTodasMarcas.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btDelTodasMarcas.setForeground(new java.awt.Color(0, 0, 0));
+        btDelTodasMarcas.setText("Eliminar todas");
+        btDelTodasMarcas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDelTodasMarcasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelTodasMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 150, 35));
+
+        contMarcas.setBackground(new java.awt.Color(204, 0, 102));
+        contMarcas.setForeground(new java.awt.Color(0, 0, 0));
+        contMarcas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(contMarcas);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 400, 270));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/conceM.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 360));
@@ -37,12 +132,104 @@ public class menuMarcas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btDelMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelMarcaActionPerformed
+        // TODO add your handling code here:
+        String idStr = JOptionPane.showInputDialog("Introduce la id de la marca que quieras borrar.");
+        try {
+            int id = Integer.parseInt(idStr);
+
+            if (id < 1) {
+                JOptionPane.showMessageDialog(null, "ID inválida.");
+                return;
+            }
+
+            mc.delete(id);
+
+            cargarDatosJTable();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
+
+        }
+    }//GEN-LAST:event_btDelMarcaActionPerformed
+
+    private void btAñadirMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirMarcaActionPerformed
+        // TODO add your handling code here:
+        new añadirMarca(this, true).setVisible(true);
+
+        cargarDatosJTable();
+    }//GEN-LAST:event_btAñadirMarcaActionPerformed
+
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Opciones opciones = new Opciones();
+        opciones.setLocationRelativeTo(null);
+        opciones.setResizable(false);
+        opciones.setVisible(true);
+    }//GEN-LAST:event_btVolverActionPerformed
+
+    private void btModMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModMarcaActionPerformed
+        // TODO add your handling code here:
+        if (contMarcas.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
+        } else {
+
+            new modMarca(this, true).setVisible(true);
+
+            cargarDatosJTable();
+        }
+    }//GEN-LAST:event_btModMarcaActionPerformed
+
+    private void btDelTodasMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodasMarcasActionPerformed
+        // TODO add your handling code here:
+        mc.deleteAll();
+        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
+        cargarDatosJTable();
+    }//GEN-LAST:event_btDelTodasMarcasActionPerformed
+    
+    private void cargarDatosJTable() {
+
+        List<Marcas> marcas = mc.findAll();
+        String[] columnas = {"IdMarca", "Nombre", "Pais de origen","Fundacion"};
+        DefaultTableModel columnModel = new DefaultTableModel(columnas, 0);
+
+        int numColumnas = columnModel.getColumnCount();
+
+        Object[] fila = new Object[numColumnas];
+
+        for (Marcas marca : marcas) {
+            fila[0] = marca.getIdMarca();
+            fila[1] = marca.getNombre();
+            fila[2] = marca.getPaisOrigen();
+            fila[3] = marca.getFundacion();
+
+            columnModel.addRow(fila);
+        }
+        contMarcas.setModel(columnModel);
+
+    }
+    public JTable getJTable() {
+        return this.contMarcas;
+    }
+
+    public MarcasJpaController getMc() {
+        return mc;
+    }
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAñadirMarca;
+    private javax.swing.JButton btDelMarca;
+    private javax.swing.JButton btDelTodasMarcas;
+    private javax.swing.JButton btModMarca;
+    private javax.swing.JButton btVolver;
+    private javax.swing.JTable contMarcas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
