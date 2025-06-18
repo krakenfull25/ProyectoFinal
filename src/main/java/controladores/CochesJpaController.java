@@ -1,4 +1,3 @@
-
 package controladores;
 
 import java.util.List;
@@ -9,8 +8,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Coches;
-import entidades.Marcas;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 public class CochesJpaController {
 
     private final EntityManagerFactory emf;
+    private MarcasJpaController mc = new MarcasJpaController();
 
     public CochesJpaController() {
         // Nombre de la unidad de persistencia definida en persistence.xml
@@ -130,15 +131,13 @@ public class CochesJpaController {
         }
     }
 
+    // Elimina todos los datos de la entidad Coches
     public void deleteAll() {
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            // Ejemplo de uso de una consulta nativa para eliminar todos los registros
-            // de la tabla coches y reiniciar el contador de autoincremento
-            // Una native query es una consulta SQL que se ejecuta directamente en la base de datos
-            // sin pasar por el mapeo de entidades de JPA
+
             em.createNativeQuery("delete from coches").executeUpdate();
             em.createNativeQuery("alter table bdconcesionario.coches AUTO_INCREMENT = 1").executeUpdate();
             tx.commit();
@@ -151,18 +150,41 @@ public class CochesJpaController {
             em.close();
         }
     }
-    
-    public void generarFicheroCoches(){
+
+    // Genera un fichero de la entidad Coches
+    public void generarFicheroCoches() {
         List<Coches> coches = this.findAll();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Coches.csv"))) {
             for (Coches coche : coches) {
-                writer.write(coche.getIdCoche()+ ";" + coche.getModelo()+ ";" + coche.getAnio()+ ";" + coche.getPrecio() 
+                writer.write(coche.getIdCoche() + ";" + coche.getModelo() + ";" + coche.getAnio() + ";" + coche.getPrecio()
                         + ";" + coche.getTipoMotor() + ";" + coche.getIdMarca().getIdMarca());
                 writer.newLine();
             }
-            
+
         } catch (IOException e) {
             System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+
+    // Lee el fichero que se genero y guarda los datos en la entidad Coches
+    public void leerCsvCoches() {
+        try (BufferedReader br = new BufferedReader(new FileReader("CopiaSeguridad/Coches.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 6) {
+                    int id = Integer.parseInt(datos[0]);
+                    String modelo = datos[1];
+                    int anio = Integer.parseInt(datos[2]);
+                    double precio = Double.parseDouble(datos[3]);
+                    String tipoMotor = datos[4];
+                    int idMarca = Integer.parseInt(datos[5]);
+
+                    this.create(new Coches(id, modelo, anio, precio, tipoMotor, this.mc.findById(idMarca)));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo: " + e.getMessage());
         }
     }
 

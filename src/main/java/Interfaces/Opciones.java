@@ -8,6 +8,8 @@ import controladores.AccesoriosJpaController;
 import controladores.CocheaccesorioJpaController;
 import controladores.CochesJpaController;
 import controladores.MarcasJpaController;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.swing.JOptionPane;
 
 /**
@@ -219,6 +221,24 @@ public class Opciones extends javax.swing.JFrame {
 
     private void botonCargarCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarCopiaActionPerformed
         // TODO add your handling code here:
+        if((Files.exists(Paths.get("CopiaSeguridad/Coches.csv"))
+                && Files.exists(Paths.get("CopiaSeguridad/Marcas.csv"))
+                && Files.exists(Paths.get("CopiaSeguridad/Accesorios.csv"))
+                && Files.exists(Paths.get("CopiaSeguridad/CocheAcce.csv")))){
+            this.cac.deleteAll();
+            this.cc.deleteAll();
+            this.ac.deleteAll();
+            this.mc.deleteAll();
+            
+            this.mc.leerCsvMarcas();
+            this.ac.leerCsvAccesorios();
+            this.cc.leerCsvCoches();
+            this.cac.leerCsvCocheAcce();
+            
+            JOptionPane.showMessageDialog(null, "Se ha cargado correctamente la copia de seguridad");
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede cargar la copia de seguridad");
+        }
     }//GEN-LAST:event_botonCargarCopiaActionPerformed
 
     /**

@@ -184,6 +184,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+  // Carga la lista de CocheAcce en la tabla de la interfaz
     private void cargarDatosJTable() {
 
         List<Cocheaccesorio> cocheAccelista = cac.findAll();

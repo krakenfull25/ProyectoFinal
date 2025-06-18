@@ -13,10 +13,13 @@ import javax.swing.JTable;
  * @author Julen García
  */
 public class modMarca extends javax.swing.JDialog {
+
     private menuMarcas padre;
     private Marcas marca;
+
     /**
      * Creates new form modMarca
+     *
      * @param parent
      * @param modal
      */
@@ -173,7 +176,7 @@ public class modMarca extends javax.swing.JDialog {
         String nombre = nombreMarca.getText();
         String pais = paisMarca.getText();
         int fundacion = Integer.parseInt(funMarca.getText());
-        padre.getMc().update(new Marcas(marca.getIdMarca(),nombre,pais,fundacion));
+        padre.getMc().update(new Marcas(marca.getIdMarca(), nombre, pais, fundacion));
         mostrarDatosEditar();
         this.dispose();
     }//GEN-LAST:event_btActualizarActionPerformed
@@ -193,25 +196,25 @@ public class modMarca extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    // Carga los datos de la marca seleccionada en la tabla y los muestra en los campos de texto
     private void mostrarDatosEditar() {
-        // Obtengo el id de la persona seleccionada
-        // Para ello, obtengo la fila seleccionada
+
         int fila = filaSeleccionadaJTable(padre.getJTable());
-        // Ahora que conozco la fila puedo obtener el id de la persona
-        // es el valor de la columna cero (según mi modelo) de esa fila
+
         int id = (int) padre.getJTable().getValueAt(fila, 0);
-        // Guarda la persona seleccionada
+
         this.marca = padre.getMc().findById(id);
-        // Muestra datos de la persona que se seleccionó en el jtable
-        // en los jtextfield
-        String idtext = this.marca.getIdMarca()+ "";
-        String fundacion = this.marca.getFundacion()+"";
+
+        String idtext = this.marca.getIdMarca() + "";
+        String fundacion = this.marca.getFundacion() + "";
         this.idMarca.setBackground(Color.GRAY);
         this.idMarca.setText(idtext);
         this.nombreMarca.setText(this.marca.getNombre());
         this.paisMarca.setText(this.marca.getPaisOrigen());
         this.funMarca.setText(fundacion);
     }
+
+// Devuelve el número de la fila seleccionada en la tabla
     private int filaSeleccionadaJTable(JTable jTable1) {
         int fila = jTable1.getSelectedRow();
         return fila;

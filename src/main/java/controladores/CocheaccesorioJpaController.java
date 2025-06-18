@@ -1,4 +1,3 @@
-
 package controladores;
 
 import entidades.Accesorios;
@@ -10,7 +9,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Cocheaccesorio;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,6 +22,8 @@ import java.nio.file.Paths;
 public class CocheaccesorioJpaController {
 
     private final EntityManagerFactory emf;
+    private CochesJpaController cc = new CochesJpaController();
+    private AccesoriosJpaController ac = new AccesoriosJpaController();
 
     public CocheaccesorioJpaController() {
         // Nombre de la unidad de persistencia definida en persistence.xml
@@ -130,15 +133,13 @@ public class CocheaccesorioJpaController {
         }
     }
 
+    // Elimina todos los datos de la entidad Cocheaccesorio
     public void deleteAll() {
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            // Ejemplo de uso de una consulta nativa para eliminar todos los registros
-            // de la tabla Cocheaccesorio y reiniciar el contador de autoincremento
-            // Una native query es una consulta SQL que se ejecuta directamente en la base de datos
-            // sin pasar por el mapeo de entidades de JPA
+
             em.createNativeQuery("delete from cocheaccesorio").executeUpdate();
             em.createNativeQuery("alter table bdconcesionario.cocheaccesorio AUTO_INCREMENT = 1").executeUpdate();
             tx.commit();
@@ -151,21 +152,41 @@ public class CocheaccesorioJpaController {
             em.close();
         }
     }
-    
-    
-    public void generarFicheroCocheAcce(){
+
+    // Genera un fichero de la entidad CocheAccesorio
+    public void generarFicheroCocheAcce() {
         List<Cocheaccesorio> cocheAcces = this.findAll();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/CocheAcce.csv"))) {
             for (Cocheaccesorio cocheAcce : cocheAcces) {
-                writer.write(cocheAcce.getIdRegistro()+ ";" + cocheAcce.getIdCoche().getIdCoche()+ ";" + cocheAcce.getIdAccesorio().getIdAccesorio());
+                writer.write(cocheAcce.getIdRegistro() + ";" + cocheAcce.getIdCoche().getIdCoche() + ";" + cocheAcce.getIdAccesorio().getIdAccesorio());
                 writer.newLine();
             }
-            
+
         } catch (IOException e) {
             System.err.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
-    
+
+    // Lee el fichero que se genero y guarda los datos en la entidad Cocheaccesorio
+    public void leerCsvCocheAcce() {
+        try (BufferedReader br = new BufferedReader(new FileReader("CopiaSeguridad/CocheAcce.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 3) {
+                    int id = Integer.parseInt(datos[0]);
+                    int idCoche = Integer.parseInt(datos[1]);
+                    int idAccesorio = Integer.parseInt(datos[2]);
+
+                    this.create(new Cocheaccesorio(id, this.ac.findById(idAccesorio), this.cc.findById(idCoche)));
+
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo: " + e.getMessage());
+        }
+    }
+
     /**
      * Cierra el EntityManagerFactory cuando ya no se necesita.
      */
@@ -175,4 +196,3 @@ public class CocheaccesorioJpaController {
         }
     }
 }
-

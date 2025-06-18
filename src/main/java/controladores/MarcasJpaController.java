@@ -1,15 +1,14 @@
-
 package controladores;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
 import entidades.Marcas;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -129,29 +128,48 @@ public class MarcasJpaController {
             em.close();
         }
     }
-    
-    public void generarFicheroMarcas(){
+
+    // Genera un fichero de la entidad Marcas
+    public void generarFicheroMarcas() {
         List<Marcas> marcas = this.findAll();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Marcas.csv"))) {
             for (Marcas marca : marcas) {
-                writer.write(marca.getIdMarca()+ ";" + marca.getNombre()+ ";" + marca.getPaisOrigen()+ ";" + marca.getFundacion());
+                writer.write(marca.getIdMarca() + ";" + marca.getNombre() + ";" + marca.getPaisOrigen() + ";" + marca.getFundacion());
                 writer.newLine();
             }
-            
+
         } catch (IOException e) {
             System.err.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
-    
+
+    // Lee el fichero que se genero y guarda los datos en la entidad Marcas
+    public void leerCsvMarcas() {
+        try (BufferedReader br = new BufferedReader(new FileReader("CopiaSeguridad/Marcas.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 4) {
+                    int id = Integer.parseInt(datos[0]);
+                    String nombre = datos[1];
+                    String paisOrigen = datos[2];
+                    int fundacion = Integer.parseInt(datos[3]);
+
+                    this.create(new Marcas(id, nombre, paisOrigen, fundacion));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo: " + e.getMessage());
+        }
+    }
+
+    // Elimina todos los datos de la entidad Marcas
     public void deleteAll() {
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            // Ejemplo de uso de una consulta nativa para eliminar todos los registros
-            // de la tabla marcas y reiniciar el contador de autoincremento
-            // Una native query es una consulta SQL que se ejecuta directamente en la base de datos
-            // sin pasar por el mapeo de entidades de JPA
+
             em.createNativeQuery("delete from marcas").executeUpdate();
             em.createNativeQuery("alter table bdconcesionario.marcas AUTO_INCREMENT = 1").executeUpdate();
             tx.commit();

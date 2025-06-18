@@ -6,13 +6,10 @@ package Interfaces;
 
 import controladores.AccesoriosJpaController;
 import controladores.CochesJpaController;
-import controladores.MarcasJpaController;
 import entidades.Accesorios;
 import entidades.Cocheaccesorio;
 import entidades.Coches;
-import entidades.Marcas;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 
@@ -192,6 +189,8 @@ public class modCocheAcce extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    // Carga los datos de la marca seleccionada en la tabla y los muestra en los campos de texto
+
     private void mostrarDatosEditar() {
        
         int fila = filaSeleccionadaJTable(padre.getJTable());
@@ -223,7 +222,7 @@ public class modCocheAcce extends javax.swing.JDialog {
         this.selecCoche.setSelectedItem(cocheAsociado);
         this.selecAcce.setSelectedItem(acceAsociado);
     }
-
+ // Muestra los datos en los campos de texto
     private int filaSeleccionadaJTable(JTable jTable1) {
         int fila = jTable1.getSelectedRow();
         return fila;

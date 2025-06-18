@@ -185,6 +185,7 @@ public class menuAccesorios extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+   // Carga la lista de Accesorios en la tabla de la interfaz
     private void cargarDatosJTable() {
 
         List<Accesorios> accesorios = ac.findAll();

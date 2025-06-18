@@ -5,7 +5,6 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -44,20 +43,20 @@ public class Marcas implements Serializable {
     @Column(name = "paisOrigen")
     private String paisOrigen;
     @Column(name = "fundacion")
-    
+
     private Integer fundacion;
-    @OneToMany(mappedBy = "idMarca",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "idMarca", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Coches> cochesCollection;
 
     public Marcas() {
     }
 
-    public Marcas( String nombre, String paisOrigen, Integer fundacion) {
-        
+    public Marcas(String nombre, String paisOrigen, Integer fundacion) {
+
         this.nombre = nombre;
         this.paisOrigen = paisOrigen;
         this.fundacion = fundacion;
-        this.cochesCollection = new ArrayList<Coches>();
+
     }
 
     public Marcas(Integer idMarca, String nombre, String paisOrigen, Integer fundacion) {
@@ -66,8 +65,6 @@ public class Marcas implements Serializable {
         this.paisOrigen = paisOrigen;
         this.fundacion = fundacion;
     }
-
-   
 
     public Integer getIdMarca() {
         return idMarca;
@@ -134,6 +131,4 @@ public class Marcas implements Serializable {
         return "Marcas{" + "idMarca=" + idMarca + ", nombre=" + nombre + ", paisOrigen=" + paisOrigen + ", fundacion=" + fundacion + '}';
     }
 
-    
-    
 }

@@ -57,8 +57,6 @@ public class Cocheaccesorio implements Serializable {
         this.idCoche = idCoche;
     }
 
-    
-
     public Integer getIdRegistro() {
         return idRegistro;
     }
@@ -108,6 +106,4 @@ public class Cocheaccesorio implements Serializable {
         return "Cocheaccesorio{" + "idRegistro=" + idRegistro + ", idAccesorio=" + idAccesorio + ", idCoche=" + idCoche + '}';
     }
 
-    
-    
 }

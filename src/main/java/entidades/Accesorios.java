@@ -59,8 +59,6 @@ public class Accesorios implements Serializable {
         this.descripcion = descripcion;
     }
 
-    
-
     public Integer getIdAccesorio() {
         return idAccesorio;
     }
@@ -118,6 +116,4 @@ public class Accesorios implements Serializable {
         return "Accesorios{" + "idAccesorio=" + idAccesorio + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
 
-    
-    
 }

@@ -1,16 +1,14 @@
-
 package controladores;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
 import entidades.Accesorios;
-import entidades.Coches;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -130,15 +128,13 @@ public class AccesoriosJpaController {
         }
     }
 
+    // Elimina todos los datos de la entidad Accesorios
     public void deleteAll() {
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            // Ejemplo de uso de una consulta nativa para eliminar todos los registros
-            // de la tabla accesorios y reiniciar el contador de autoincremento
-            // Una native query es una consulta SQL que se ejecuta directamente en la base de datos
-            // sin pasar por el mapeo de entidades de JPA
+
             em.createNativeQuery("delete from accesorios").executeUpdate();
             em.createNativeQuery("alter table bdconcesionario.accesorios AUTO_INCREMENT = 1").executeUpdate();
             tx.commit();
@@ -151,20 +147,41 @@ public class AccesoriosJpaController {
             em.close();
         }
     }
-    
-    public void generarFicheroAccesorios(){
+
+    // Genera un fichero de la entidad Accesorios
+    public void generarFicheroAccesorios() {
         List<Accesorios> accesorios = this.findAll();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Accesorios.csv"))) {
             for (Accesorios Acce : accesorios) {
-                writer.write(Acce.getIdAccesorio()+ ";" + Acce.getNombre() + ";" + Acce.getDescripcion());
+                writer.write(Acce.getIdAccesorio() + ";" + Acce.getNombre() + ";" + Acce.getDescripcion());
                 writer.newLine();
             }
-            
+
         } catch (IOException e) {
             System.err.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
-    
+
+    // Lee el fichero que se genero y guarda los datos en la entidad Accesorios
+    public void leerCsvAccesorios() {
+        try (BufferedReader br = new BufferedReader(new FileReader("CopiaSeguridad/Accesorios.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 3) {
+                    int id = Integer.parseInt(datos[0]);
+                    String nombre = datos[1];
+                    String descripcion = datos[2];
+
+                    this.create(new Accesorios(id, nombre, descripcion));
+
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo: " + e.getMessage());
+        }
+    }
+
     /**
      * Cierra el EntityManagerFactory cuando ya no se necesita.
      */

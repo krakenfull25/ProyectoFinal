@@ -5,7 +5,6 @@
 package Interfaces;
 
 import controladores.MarcasJpaController;
-import entidades.Accesorios;
 import entidades.Coches;
 import entidades.Marcas;
 import java.util.List;
@@ -217,6 +216,7 @@ public class añadirCoche extends javax.swing.JDialog {
     private void selecMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selecMarcaActionPerformed
+   // Carga las marca en el JComboBox de la interfaz
     private void cargarMarcas(){
         List<Marcas> marcas = this.mc.findAll();
         

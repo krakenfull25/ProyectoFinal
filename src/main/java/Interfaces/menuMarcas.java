@@ -180,7 +180,7 @@ public class menuMarcas extends javax.swing.JFrame {
             cargarDatosJTable();
         }
     }//GEN-LAST:event_btModMarcaActionPerformed
-
+// Carga la lista de marcas en la tabla de la interfaz
     private void cargarDatosJTable() {
 
         List<Marcas> marcas = mc.findAll();

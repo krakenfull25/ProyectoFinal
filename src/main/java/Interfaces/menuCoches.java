@@ -4,12 +4,8 @@
  */
 package Interfaces;
 
-import controladores.AccesoriosJpaController;
 import controladores.CochesJpaController;
-import controladores.MarcasJpaController;
-import entidades.Accesorios;
 import entidades.Coches;
-import entidades.Marcas;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -185,6 +181,7 @@ public class menuCoches extends javax.swing.JFrame {
             cargarDatosJTable();
         }
     }//GEN-LAST:event_btModCocheActionPerformed
+   // Carga la lista de Coches en la tabla de la interfaz
     private void cargarDatosJTable() {
 
         List<Coches> cocheslista = cc.findAll();

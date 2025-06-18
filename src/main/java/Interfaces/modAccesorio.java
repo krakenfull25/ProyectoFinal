@@ -157,24 +157,23 @@ public class modAccesorio extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
-    
+    // Carga los datos de la marca seleccionada en la tabla y los muestra en los campos de texto
+
     private void mostrarDatosEditar() {
-        // Obtengo el id de la persona seleccionada
-        // Para ello, obtengo la fila seleccionada
+        
         int fila = filaSeleccionadaJTable(padre.getJTable());
-        // Ahora que conozco la fila puedo obtener el id de la persona
-        // es el valor de la columna cero (según mi modelo) de esa fila
+        
         int id = (int) padre.getJTable().getValueAt(fila, 0);
-        // Guarda la persona seleccionada
+        
         this.accesorio = padre.getAc().findById(id);
-        // Muestra datos de la persona que se seleccionó en el jtable
-        // en los jtextfield
+        
         String idtext = this.accesorio.getIdAccesorio()+ "";
         this.idAcce.setBackground(Color.GRAY);
         this.idAcce.setText(idtext);
         this.nombreAcce.setText(this.accesorio.getNombre());
         this.DescAcce.setText(this.accesorio.getDescripcion());
     }
+     // Muestra los datos en los campos de texto
     private int filaSeleccionadaJTable(JTable jTable1) {
         int fila = jTable1.getSelectedRow();
         return fila;

@@ -5,13 +5,10 @@
 package Interfaces;
 
 import controladores.AccesoriosJpaController;
-import controladores.CocheaccesorioJpaController;
 import controladores.CochesJpaController;
-import controladores.MarcasJpaController;
 import entidades.Accesorios;
 import entidades.Cocheaccesorio;
 import entidades.Coches;
-import entidades.Marcas;
 import java.util.List;
 
 /**
@@ -150,6 +147,7 @@ public class añadirCocheAcce extends javax.swing.JDialog {
     private void selecAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecAcceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selecAcceActionPerformed
+  // Carga los coches y accesorios en los JComboBox de la interfaz
     private void cargarDatos(){
         List<Coches> coches = this.cc.findAll();
         List<Accesorios> accesorios = this.ac.findAll();
