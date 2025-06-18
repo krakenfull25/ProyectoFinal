@@ -9,6 +9,11 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Accesorios;
+import entidades.Coches;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author jfervic933
@@ -146,7 +151,20 @@ public class AccesoriosJpaController {
             em.close();
         }
     }
-
+    
+    public void generarFicheroAccesorios(){
+        List<Accesorios> accesorios = this.findAll();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Accesorios.csv"))) {
+            for (Accesorios Acce : accesorios) {
+                writer.write(Acce.getIdAccesorio()+ ";" + Acce.getNombre() + ";" + Acce.getDescripcion());
+                writer.newLine();
+            }
+            
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+    
     /**
      * Cierra el EntityManagerFactory cuando ya no se necesita.
      */

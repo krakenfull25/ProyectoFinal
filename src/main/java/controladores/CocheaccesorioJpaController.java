@@ -1,6 +1,7 @@
 
 package controladores;
 
+import entidades.Accesorios;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,10 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Cocheaccesorio;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author jfervic933
@@ -146,7 +151,21 @@ public class CocheaccesorioJpaController {
             em.close();
         }
     }
-
+    
+    
+    public void generarFicheroCocheAcce(){
+        List<Cocheaccesorio> cocheAcces = this.findAll();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/CocheAcce.csv"))) {
+            for (Cocheaccesorio cocheAcce : cocheAcces) {
+                writer.write(cocheAcce.getIdRegistro()+ ";" + cocheAcce.getIdCoche().getIdCoche()+ ";" + cocheAcce.getIdAccesorio().getIdAccesorio());
+                writer.newLine();
+            }
+            
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+    
     /**
      * Cierra el EntityManagerFactory cuando ya no se necesita.
      */

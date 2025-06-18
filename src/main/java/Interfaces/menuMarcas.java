@@ -58,6 +58,7 @@ public class menuMarcas extends javax.swing.JFrame {
         btDelMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btDelMarca.setForeground(new java.awt.Color(0, 0, 0));
         btDelMarca.setText("Eliminar marca");
+        btDelMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btDelMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDelMarcaActionPerformed(evt);
@@ -69,6 +70,7 @@ public class menuMarcas extends javax.swing.JFrame {
         btAñadirMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btAñadirMarca.setForeground(new java.awt.Color(0, 0, 0));
         btAñadirMarca.setText("Añadir marca");
+        btAñadirMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btAñadirMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAñadirMarcaActionPerformed(evt);
@@ -80,6 +82,7 @@ public class menuMarcas extends javax.swing.JFrame {
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btVolver.setForeground(new java.awt.Color(0, 0, 0));
         btVolver.setText("Volver");
+        btVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVolverActionPerformed(evt);
@@ -91,6 +94,7 @@ public class menuMarcas extends javax.swing.JFrame {
         btModMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btModMarca.setForeground(new java.awt.Color(0, 0, 0));
         btModMarca.setText("Modificar marca");
+        btModMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btModMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btModMarcaActionPerformed(evt);
@@ -111,6 +115,7 @@ public class menuMarcas extends javax.swing.JFrame {
 
             }
         ));
+        contMarcas.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(contMarcas);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 400, 270));

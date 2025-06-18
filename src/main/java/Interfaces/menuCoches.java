@@ -57,6 +57,7 @@ public class menuCoches extends javax.swing.JFrame {
         btDelCoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btDelCoche.setForeground(new java.awt.Color(0, 0, 0));
         btDelCoche.setText("Eliminar Coche");
+        btDelCoche.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btDelCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDelCocheActionPerformed(evt);
@@ -68,6 +69,7 @@ public class menuCoches extends javax.swing.JFrame {
         btAñadirCoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btAñadirCoche.setForeground(new java.awt.Color(0, 0, 0));
         btAñadirCoche.setText("Añadir Coche");
+        btAñadirCoche.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btAñadirCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAñadirCocheActionPerformed(evt);
@@ -79,6 +81,7 @@ public class menuCoches extends javax.swing.JFrame {
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btVolver.setForeground(new java.awt.Color(0, 0, 0));
         btVolver.setText("Volver");
+        btVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVolverActionPerformed(evt);
@@ -90,6 +93,7 @@ public class menuCoches extends javax.swing.JFrame {
         btModCoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btModCoche.setForeground(new java.awt.Color(0, 0, 0));
         btModCoche.setText("Modificar Coche");
+        btModCoche.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btModCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btModCocheActionPerformed(evt);
@@ -116,6 +120,7 @@ public class menuCoches extends javax.swing.JFrame {
 
             }
         ));
+        contCoche.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(contCoche);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 440, 300));

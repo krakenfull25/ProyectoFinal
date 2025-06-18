@@ -58,6 +58,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
         btDelCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btDelCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
         btDelCocheAcce.setText("Quitar acce. de un coche");
+        btDelCocheAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btDelCocheAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDelCocheAcceActionPerformed(evt);
@@ -69,6 +70,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
         btAñadirCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btAñadirCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
         btAñadirCocheAcce.setText("Vincular acce. a un coche ");
+        btAñadirCocheAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btAñadirCocheAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAñadirCocheAcceActionPerformed(evt);
@@ -80,6 +82,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btVolver.setForeground(new java.awt.Color(0, 0, 0));
         btVolver.setText("Volver");
+        btVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVolverActionPerformed(evt);
@@ -91,6 +94,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
         btModCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btModCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
         btModCocheAcce.setText("Mod. acce. de un coche");
+        btModCocheAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btModCocheAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btModCocheAcceActionPerformed(evt);
@@ -111,6 +115,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
 
             }
         ));
+        contCocheAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(contCocheAcce);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 380, 260));

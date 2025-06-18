@@ -9,6 +9,10 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Marcas;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author jfervic933
@@ -125,7 +129,20 @@ public class MarcasJpaController {
             em.close();
         }
     }
-
+    
+    public void generarFicheroMarcas(){
+        List<Marcas> marcas = this.findAll();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Marcas.csv"))) {
+            for (Marcas marca : marcas) {
+                writer.write(marca.getIdMarca()+ ";" + marca.getNombre()+ ";" + marca.getPaisOrigen()+ ";" + marca.getFundacion());
+                writer.newLine();
+            }
+            
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+    
     public void deleteAll() {
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();

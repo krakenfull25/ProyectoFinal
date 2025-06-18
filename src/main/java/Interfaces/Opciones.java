@@ -4,12 +4,23 @@
  */
 package Interfaces;
 
+import controladores.AccesoriosJpaController;
+import controladores.CocheaccesorioJpaController;
+import controladores.CochesJpaController;
+import controladores.MarcasJpaController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Julen García
  */
 public class Opciones extends javax.swing.JFrame {
-
+    
+    private MarcasJpaController mc = new MarcasJpaController();
+    private CochesJpaController cc = new CochesJpaController();
+    private AccesoriosJpaController ac = new AccesoriosJpaController();
+    private CocheaccesorioJpaController cac = new CocheaccesorioJpaController();
+    
     /**
      * Creates new form Opcionesv
      */
@@ -31,11 +42,13 @@ public class Opciones extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        botonSalir = new javax.swing.JButton();
+        botonHacerCopia = new javax.swing.JButton();
         botonMarcas = new javax.swing.JButton();
         botonAccesorios = new javax.swing.JButton();
         botonCoches = new javax.swing.JButton();
         botonCochesAcce1 = new javax.swing.JButton();
+        botonSalir1 = new javax.swing.JButton();
+        botonCargarCopia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,21 +72,26 @@ public class Opciones extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/coche accesorios.PNG"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 140, 50));
 
-        botonSalir.setBackground(new java.awt.Color(102, 204, 255));
-        botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonSalir.setText("Salir");
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+        botonHacerCopia.setBackground(new java.awt.Color(0, 0, 0));
+        botonHacerCopia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonHacerCopia.setForeground(new java.awt.Color(255, 255, 255));
+        botonHacerCopia.setText("Realizar copia de seguridad");
+        botonHacerCopia.setBorder(null);
+        botonHacerCopia.setBorderPainted(false);
+        botonHacerCopia.setContentAreaFilled(false);
+        botonHacerCopia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonHacerCopia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
+                botonHacerCopiaActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 150, 30));
+        getContentPane().add(botonHacerCopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, 40));
 
         botonMarcas.setBackground(new java.awt.Color(102, 204, 255));
         botonMarcas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonMarcas.setForeground(new java.awt.Color(255, 255, 255));
         botonMarcas.setText("Marcas");
+        botonMarcas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMarcasActionPerformed(evt);
@@ -85,6 +103,7 @@ public class Opciones extends javax.swing.JFrame {
         botonAccesorios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonAccesorios.setForeground(new java.awt.Color(255, 255, 255));
         botonAccesorios.setText("Accesorios");
+        botonAccesorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAccesorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAccesoriosActionPerformed(evt);
@@ -96,6 +115,7 @@ public class Opciones extends javax.swing.JFrame {
         botonCoches.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonCoches.setForeground(new java.awt.Color(255, 255, 255));
         botonCoches.setText("Coches");
+        botonCoches.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCoches.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCochesActionPerformed(evt);
@@ -107,12 +127,39 @@ public class Opciones extends javax.swing.JFrame {
         botonCochesAcce1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCochesAcce1.setForeground(new java.awt.Color(255, 255, 255));
         botonCochesAcce1.setText("Accesorios de cada coche");
+        botonCochesAcce1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCochesAcce1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCochesAcce1ActionPerformed(evt);
             }
         });
         getContentPane().add(botonCochesAcce1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 170, 50));
+
+        botonSalir1.setBackground(new java.awt.Color(102, 204, 255));
+        botonSalir1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalir1.setText("Salir");
+        botonSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonSalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalir1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 150, 30));
+
+        botonCargarCopia.setBackground(new java.awt.Color(0, 0, 0));
+        botonCargarCopia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonCargarCopia.setForeground(new java.awt.Color(255, 255, 255));
+        botonCargarCopia.setText("Cargar copia de seguridad");
+        botonCargarCopia.setBorderPainted(false);
+        botonCargarCopia.setContentAreaFilled(false);
+        botonCargarCopia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCargarCopia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarCopiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCargarCopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 210, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/opciones.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -138,10 +185,14 @@ public class Opciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCochesActionPerformed
 
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+    private void botonHacerCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHacerCopiaActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_botonSalirActionPerformed
+        mc.generarFicheroMarcas();
+        cc.generarFicheroCoches();
+        ac.generarFicheroAccesorios();
+        cac.generarFicheroCocheAcce();
+        JOptionPane.showMessageDialog(null, "Se ha realizado la copia de seguridad");
+    }//GEN-LAST:event_botonHacerCopiaActionPerformed
 
     private void botonAccesoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAccesoriosActionPerformed
         // TODO add your handling code here:
@@ -161,16 +212,27 @@ public class Opciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCochesAcce1ActionPerformed
 
+    private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_botonSalir1ActionPerformed
+
+    private void botonCargarCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarCopiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCargarCopiaActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAccesorios;
+    private javax.swing.JButton botonCargarCopia;
     private javax.swing.JButton botonCoches;
     private javax.swing.JButton botonCochesAcce1;
+    private javax.swing.JButton botonHacerCopia;
     private javax.swing.JButton botonMarcas;
-    private javax.swing.JButton botonSalir;
+    private javax.swing.JButton botonSalir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -52,6 +52,7 @@ public class menuAccesorios extends javax.swing.JFrame {
         btDelAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btDelAcce.setForeground(new java.awt.Color(0, 0, 0));
         btDelAcce.setText("Eliminar Accesorio");
+        btDelAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btDelAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDelAcceActionPerformed(evt);
@@ -63,6 +64,7 @@ public class menuAccesorios extends javax.swing.JFrame {
         btAñadirAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btAñadirAcce.setForeground(new java.awt.Color(0, 0, 0));
         btAñadirAcce.setText("Añadir Accesorio");
+        btAñadirAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btAñadirAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAñadirAcceActionPerformed(evt);
@@ -74,6 +76,7 @@ public class menuAccesorios extends javax.swing.JFrame {
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btVolver.setForeground(new java.awt.Color(0, 0, 0));
         btVolver.setText("Volver");
+        btVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVolverActionPerformed(evt);
@@ -85,6 +88,7 @@ public class menuAccesorios extends javax.swing.JFrame {
         btModAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btModAcce.setForeground(new java.awt.Color(0, 0, 0));
         btModAcce.setText("Modificar Accesorio");
+        btModAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btModAcce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btModAcceActionPerformed(evt);
@@ -111,6 +115,7 @@ public class menuAccesorios extends javax.swing.JFrame {
 
             }
         ));
+        contAcce.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(contAcce);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 430, 300));

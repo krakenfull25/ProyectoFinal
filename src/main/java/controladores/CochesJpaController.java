@@ -9,6 +9,11 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Coches;
+import entidades.Marcas;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author jfervic933
@@ -144,6 +149,20 @@ public class CochesJpaController {
             throw new RuntimeException("Error al eliminar todos los coches", ex);
         } finally {
             em.close();
+        }
+    }
+    
+    public void generarFicheroCoches(){
+        List<Coches> coches = this.findAll();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Coches.csv"))) {
+            for (Coches coche : coches) {
+                writer.write(coche.getIdCoche()+ ";" + coche.getModelo()+ ";" + coche.getAnio()+ ";" + coche.getPrecio() 
+                        + ";" + coche.getTipoMotor() + ";" + coche.getIdMarca().getIdMarca());
+                writer.newLine();
+            }
+            
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
 

@@ -31,6 +31,7 @@ public class Inicio extends javax.swing.JFrame {
         botonSalirInicio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        botonAcceder1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,6 +45,7 @@ public class Inicio extends javax.swing.JFrame {
         botonAcceder.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         botonAcceder.setForeground(new java.awt.Color(0, 0, 0));
         botonAcceder.setText("Acceder");
+        botonAcceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAccederActionPerformed(evt);
@@ -55,6 +57,7 @@ public class Inicio extends javax.swing.JFrame {
         botonSalirInicio.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         botonSalirInicio.setForeground(new java.awt.Color(0, 0, 0));
         botonSalirInicio.setText("Salir");
+        botonSalirInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonSalirInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirInicioActionPerformed(evt);
@@ -64,10 +67,21 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 153, 51));
         jLabel3.setText("Julen García Vázquez 1ºDAW");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iniciov3.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 550, 430));
+
+        botonAcceder1.setBackground(new java.awt.Color(255, 204, 51));
+        botonAcceder1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        botonAcceder1.setForeground(new java.awt.Color(0, 0, 0));
+        botonAcceder1.setText("Acceder");
+        botonAcceder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAcceder1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonAcceder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 190, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,6 +89,10 @@ public class Inicio extends javax.swing.JFrame {
     private void botonSalirInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirInicioActionPerformed
         System.exit(0);
     }//GEN-LAST:event_botonSalirInicioActionPerformed
+
+    private void botonAcceder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAcceder1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAcceder1ActionPerformed
 
     private void botonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAccederActionPerformed
         Opciones opciones = new Opciones();
@@ -124,6 +142,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAcceder;
+    private javax.swing.JButton botonAcceder1;
     private javax.swing.JButton botonSalirInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
