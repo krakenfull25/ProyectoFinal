@@ -45,7 +45,6 @@ public class menuCoches extends javax.swing.JFrame {
         btAñadirCoche = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
         btModCoche = new javax.swing.JButton();
-        btDelTodosCoche = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         contCoche = new javax.swing.JTable();
@@ -63,7 +62,7 @@ public class menuCoches extends javax.swing.JFrame {
                 btDelCocheActionPerformed(evt);
             }
         });
-        getContentPane().add(btDelCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 130, 35));
+        getContentPane().add(btDelCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, 35));
 
         btAñadirCoche.setBackground(new java.awt.Color(102, 255, 102));
         btAñadirCoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -74,7 +73,7 @@ public class menuCoches extends javax.swing.JFrame {
                 btAñadirCocheActionPerformed(evt);
             }
         });
-        getContentPane().add(btAñadirCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, 35));
+        getContentPane().add(btAñadirCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 130, 35));
 
         btVolver.setBackground(new java.awt.Color(102, 255, 102));
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -96,18 +95,7 @@ public class menuCoches extends javax.swing.JFrame {
                 btModCocheActionPerformed(evt);
             }
         });
-        getContentPane().add(btModCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 130, 35));
-
-        btDelTodosCoche.setBackground(new java.awt.Color(102, 255, 102));
-        btDelTodosCoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btDelTodosCoche.setForeground(new java.awt.Color(0, 0, 0));
-        btDelTodosCoche.setText("Eliminar todos");
-        btDelTodosCoche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDelTodosCocheActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btDelTodosCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 130, 35));
+        getContentPane().add(btModCoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 130, 35));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
@@ -161,12 +149,12 @@ public class menuCoches extends javax.swing.JFrame {
 
     private void btAñadirCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirCocheActionPerformed
         // TODO add your handling code here:
-//        añadirAcce acce = new añadirAcce(this, true);
-//        acce.setLocationRelativeTo(null);
-//        acce.setResizable(false);
-//        acce.setVisible(true);
-//
-//        cargarDatosJTable();
+        añadirCoche acce = new añadirCoche(this, true);
+        acce.setLocationRelativeTo(null);
+        acce.setResizable(false);
+        acce.setVisible(true);
+
+        cargarDatosJTable();
     }//GEN-LAST:event_btAñadirCocheActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
@@ -192,13 +180,6 @@ public class menuCoches extends javax.swing.JFrame {
             cargarDatosJTable();
         }
     }//GEN-LAST:event_btModCocheActionPerformed
-
-    private void btDelTodosCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosCocheActionPerformed
-        // TODO add your handling code here:
-        cc.deleteAll();
-        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
-        cargarDatosJTable();
-    }//GEN-LAST:event_btDelTodosCocheActionPerformed
     private void cargarDatosJTable() {
 
         List<Coches> cocheslista = cc.findAll();
@@ -232,6 +213,7 @@ public class menuCoches extends javax.swing.JFrame {
     public CochesJpaController getCc() {
         return cc;
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -240,7 +222,6 @@ public class menuCoches extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadirCoche;
     private javax.swing.JButton btDelCoche;
-    private javax.swing.JButton btDelTodosCoche;
     private javax.swing.JButton btModCoche;
     private javax.swing.JButton btVolver;
     private javax.swing.JTable contCoche;

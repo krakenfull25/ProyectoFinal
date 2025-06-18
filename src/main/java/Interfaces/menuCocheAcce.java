@@ -4,17 +4,27 @@
  */
 package Interfaces;
 
+import controladores.CocheaccesorioJpaController;
+import entidades.Cocheaccesorio;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Julen García
  */
 public class menuCocheAcce extends javax.swing.JFrame {
 
+    private CocheaccesorioJpaController cac = new CocheaccesorioJpaController();
+
     /**
      * Creates new form menuCocheAcce
      */
     public menuCocheAcce() {
         initComponents();
+        cargarDatosJTable();
     }
 
     /**
@@ -31,7 +41,6 @@ public class menuCocheAcce extends javax.swing.JFrame {
         btAñadirCocheAcce = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
         btModCocheAcce = new javax.swing.JButton();
-        btDelTodosCocheAcce = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         contCocheAcce = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -54,7 +63,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
                 btDelCocheAcceActionPerformed(evt);
             }
         });
-        getContentPane().add(btDelCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, 35));
+        getContentPane().add(btDelCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 200, 35));
 
         btAñadirCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
         btAñadirCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -87,18 +96,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
                 btModCocheAcceActionPerformed(evt);
             }
         });
-        getContentPane().add(btModCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 35));
-
-        btDelTodosCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
-        btDelTodosCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btDelTodosCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
-        btDelTodosCocheAcce.setText("Eliminar todos");
-        btDelTodosCocheAcce.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDelTodosCocheAcceActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btDelTodosCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 200, 35));
+        getContentPane().add(btModCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 200, 35));
 
         contCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
         contCocheAcce.setForeground(new java.awt.Color(0, 0, 0));
@@ -124,70 +122,100 @@ public class menuCocheAcce extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDelCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelCocheAcceActionPerformed
-//        // TODO add your handling code here:
-//        String idStr = JOptionPane.showInputDialog("Introduce la id del acceosorio que quieras borrar.");
-//        try {
-//            int id = Integer.parseInt(idStr);
-//
-//            if (id < 1) {
-//                JOptionPane.showMessageDialog(null, "ID inválida.");
-//                return;
-//            }
-//
-//            ac.delete(id);
-//
-//            cargarDatosJTable();
-//
-//        } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
-//
-//        }
+        // TODO add your handling code here:
+        String idStr = JOptionPane.showInputDialog("Introduce la id del registro que quieras borrar.");
+        try {
+            int id = Integer.parseInt(idStr);
+
+            if (id < 1) {
+                JOptionPane.showMessageDialog(null, "ID inválida.");
+                return;
+            }
+
+            cac.delete(id);
+
+            cargarDatosJTable();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, introduce un número válido.");
+
+        }
     }//GEN-LAST:event_btDelCocheAcceActionPerformed
 
     private void btAñadirCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAñadirCocheAcceActionPerformed
         // TODO add your handling code here:
-//        new añadirAcce(this, true).setVisible(true);
-//
-//        cargarDatosJTable();
+        añadirCocheAcce añadirCocheAcce = new añadirCocheAcce(this, true);
+        añadirCocheAcce.setLocationRelativeTo(null);
+        añadirCocheAcce.setResizable(false);
+        añadirCocheAcce.setVisible(true);
+
+        cargarDatosJTable();
     }//GEN-LAST:event_btAñadirCocheAcceActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
         // TODO add your handling code here:
-//        this.dispose();
-//        Opciones opciones = new Opciones();
-//        opciones.setLocationRelativeTo(null);
-//        opciones.setResizable(false);
-//        opciones.setVisible(true);
+        this.dispose();
+        Opciones opciones = new Opciones();
+        opciones.setLocationRelativeTo(null);
+        opciones.setResizable(false);
+        opciones.setVisible(true);
     }//GEN-LAST:event_btVolverActionPerformed
 
     private void btModCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModCocheAcceActionPerformed
         // TODO add your handling code here:
-//        if (contCocheAcce.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
-//        } else {
-//
-//            new modAccesorio(this, true).setVisible(true);
-//
-//            cargarDatosJTable();
-//        }
-    }//GEN-LAST:event_btModCocheAcceActionPerformed
+        if (contCocheAcce.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningún registro");
+        } else {
 
-    private void btDelTodosCocheAcceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosCocheAcceActionPerformed
-        // TODO add your handling code here:
-//        ac.deleteAll();
-//        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
-//        cargarDatosJTable();
-    }//GEN-LAST:event_btDelTodosCocheAcceActionPerformed
+            modCocheAcce menuModAcceCoche = new modCocheAcce(this,true);
+            menuModAcceCoche.setLocationRelativeTo(null);
+            menuModAcceCoche.setResizable(false);
+            menuModAcceCoche.setVisible(true);
+
+            cargarDatosJTable();
+        }
+    }//GEN-LAST:event_btModCocheAcceActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+    private void cargarDatosJTable() {
+
+        List<Cocheaccesorio> cocheAccelista = cac.findAll();
+        String[] columnas = {"IdRegistro", "Coche", "Accesorio"};
+        DefaultTableModel columnModel = new DefaultTableModel(columnas, 0);
+
+        int numColumnas = columnModel.getColumnCount();
+
+        Object[] fila = new Object[numColumnas];
+
+        for (Cocheaccesorio cocheAcce : cocheAccelista) {
+            int idCoche = cocheAcce.getIdCoche().getIdCoche();
+            String nomCoche = cocheAcce.getIdCoche().getModelo();
+
+            int idAcce = cocheAcce.getIdAccesorio().getIdAccesorio();
+            String nomAcce = cocheAcce.getIdAccesorio().getNombre();
+            fila[0] = cocheAcce.getIdRegistro();
+            fila[1] = idCoche + ", " + nomCoche;
+            fila[2] = idAcce + ", " + nomAcce;
+
+            columnModel.addRow(fila);
+        }
+        contCocheAcce.setModel(columnModel);
+
+    }
+
+    public CocheaccesorioJpaController getCac() {
+        return cac;
+    }
+
+    public JTable getJTable() {
+        return this.contCocheAcce;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadirCocheAcce;
     private javax.swing.JButton btDelCocheAcce;
-    private javax.swing.JButton btDelTodosCocheAcce;
     private javax.swing.JButton btModCocheAcce;
     private javax.swing.JButton btVolver;
     private javax.swing.JTable contCocheAcce;

@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -67,6 +68,7 @@ public class Coches implements Serializable {
         this.precio = precio;
         this.tipoMotor = tipoMotor;
         this.idMarca = idMarca;
+        this.cocheaccesorioCollection = new ArrayList<>();
     }
 
     public Coches(Integer idCoche, String modelo, Integer anio, Double precio, String tipoMotor, Marcas idMarca) {

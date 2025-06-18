@@ -41,7 +41,6 @@ public class menuMarcas extends javax.swing.JFrame {
         btAñadirMarca = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
         btModMarca = new javax.swing.JButton();
-        btDelTodasMarcas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         contMarcas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -86,7 +85,7 @@ public class menuMarcas extends javax.swing.JFrame {
                 btVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 130, 35));
+        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 130, 35));
 
         btModMarca.setBackground(new java.awt.Color(204, 0, 102));
         btModMarca.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -98,17 +97,6 @@ public class menuMarcas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 150, 35));
-
-        btDelTodasMarcas.setBackground(new java.awt.Color(204, 0, 102));
-        btDelTodasMarcas.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btDelTodasMarcas.setForeground(new java.awt.Color(0, 0, 0));
-        btDelTodasMarcas.setText("Eliminar todas");
-        btDelTodasMarcas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDelTodasMarcasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btDelTodasMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 150, 35));
 
         contMarcas.setBackground(new java.awt.Color(204, 0, 102));
         contMarcas.setForeground(new java.awt.Color(0, 0, 0));
@@ -188,13 +176,6 @@ public class menuMarcas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btModMarcaActionPerformed
 
-    private void btDelTodasMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodasMarcasActionPerformed
-        // TODO add your handling code here:
-        mc.deleteAll();
-        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
-        cargarDatosJTable();
-    }//GEN-LAST:event_btDelTodasMarcasActionPerformed
-
     private void cargarDatosJTable() {
 
         List<Marcas> marcas = mc.findAll();
@@ -232,7 +213,6 @@ public class menuMarcas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadirMarca;
     private javax.swing.JButton btDelMarca;
-    private javax.swing.JButton btDelTodasMarcas;
     private javax.swing.JButton btModMarca;
     private javax.swing.JButton btVolver;
     private javax.swing.JTable contMarcas;

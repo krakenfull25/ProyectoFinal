@@ -40,7 +40,6 @@ public class menuAccesorios extends javax.swing.JFrame {
         btAñadirAcce = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
         btModAcce = new javax.swing.JButton();
-        btDelTodosAcce1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         contAcce = new javax.swing.JTable();
@@ -80,7 +79,7 @@ public class menuAccesorios extends javax.swing.JFrame {
                 btVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 35));
+        getContentPane().add(btVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 160, 35));
 
         btModAcce.setBackground(new java.awt.Color(255, 0, 0));
         btModAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -92,17 +91,6 @@ public class menuAccesorios extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 160, 35));
-
-        btDelTodosAcce1.setBackground(new java.awt.Color(255, 0, 0));
-        btDelTodosAcce1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btDelTodosAcce1.setForeground(new java.awt.Color(0, 0, 0));
-        btDelTodosAcce1.setText("Eliminar todos");
-        btDelTodosAcce1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDelTodosAcce1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btDelTodosAcce1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 160, 35));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
@@ -189,13 +177,6 @@ public class menuAccesorios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btVolverActionPerformed
 
-    private void btDelTodosAcce1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelTodosAcce1ActionPerformed
-        // TODO add your handling code here:
-        ac.deleteAll();
-        JOptionPane.showMessageDialog(null, "Se han eliminado todos los accesorios");
-        cargarDatosJTable();
-    }//GEN-LAST:event_btDelTodosAcce1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -232,7 +213,6 @@ public class menuAccesorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadirAcce;
     private javax.swing.JButton btDelAcce;
-    private javax.swing.JButton btDelTodosAcce1;
     private javax.swing.JButton btModAcce;
     private javax.swing.JButton btVolver;
     private javax.swing.JTable contAcce;

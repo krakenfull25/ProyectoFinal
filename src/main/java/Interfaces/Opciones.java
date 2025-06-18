@@ -48,7 +48,7 @@ public class Opciones extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Eliga una opcion");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 220, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 220, 70));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/subaru.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 110, 60));
@@ -158,6 +158,7 @@ public class Opciones extends javax.swing.JFrame {
         cocheAcce.setLocationRelativeTo(null);
         cocheAcce.setResizable(false);
         cocheAcce.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botonCochesAcce1ActionPerformed
 
     /**
