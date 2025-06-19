@@ -40,7 +40,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="0" width="400" height="70"/>
+          <AbsoluteConstraints x="30" y="0" width="470" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -57,7 +57,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Quitar acce. de un coche"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -82,7 +82,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Vincular acce. a un coche "/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -90,7 +90,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="90" width="-1" height="35"/>
+          <AbsoluteConstraints x="10" y="90" width="200" height="35"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -107,7 +107,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Volver"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -132,7 +132,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Mod. acce. de un coche"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -168,7 +168,7 @@
               <Table columnCount="0" rowCount="4"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Crosshair Cursor"/>
+              <Color id="Cursor de Punto de Mira"/>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>

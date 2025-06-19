@@ -52,7 +52,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
         jLabel2.setText("Accesorios de los coches");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 400, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 470, 70));
 
         btDelCocheAcce.setBackground(new java.awt.Color(0, 153, 153));
         btDelCocheAcce.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -76,7 +76,7 @@ public class menuCocheAcce extends javax.swing.JFrame {
                 btAñadirCocheAcceActionPerformed(evt);
             }
         });
-        getContentPane().add(btAñadirCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 35));
+        getContentPane().add(btAñadirCocheAcce, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 200, 35));
 
         btVolver.setBackground(new java.awt.Color(0, 153, 153));
         btVolver.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
