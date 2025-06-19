@@ -235,7 +235,7 @@ public class Opciones extends javax.swing.JFrame {
             this.cc.leerCsvCoches();
             this.cac.leerCsvCocheAcce();
             
-            JOptionPane.showMessageDialog(null, "Se ha cargado correctamente la copia de seguridad");
+            JOptionPane.showMessageDialog(null, "Se ha cargado correctamente la copia de seguridad. Requiere reinicio");
         }else{
             JOptionPane.showMessageDialog(null, "No se puede cargar la copia de seguridad");
         }

@@ -9,6 +9,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Cocheaccesorio;
+import entidades.Coches;
+import entidades.Marcas;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -158,7 +160,7 @@ public class CocheaccesorioJpaController {
         List<Cocheaccesorio> cocheAcces = this.findAll();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/CocheAcce.csv"))) {
             for (Cocheaccesorio cocheAcce : cocheAcces) {
-                writer.write(cocheAcce.getIdRegistro() + ";" + cocheAcce.getIdCoche().getIdCoche() + ";" + cocheAcce.getIdAccesorio().getIdAccesorio());
+                writer.write(cocheAcce.getIdRegistro() + ";" + cocheAcce.getIdCoche().getModelo()+ ";" + cocheAcce.getIdAccesorio().getNombre());
                 writer.newLine();
             }
 
@@ -175,10 +177,24 @@ public class CocheaccesorioJpaController {
                 String[] datos = linea.split(";");
                 if (datos.length == 3) {
                     int id = Integer.parseInt(datos[0]);
-                    int idCoche = Integer.parseInt(datos[1]);
-                    int idAccesorio = Integer.parseInt(datos[2]);
+                    
+                    List<Coches> coches = this.cc.findAll();
+                    int idCoche = 0;
+                    List<Accesorios> acces = this.ac.findAll();
+                    int idAcce = 0;
+                    for (Coches coche : coches) {
+                        if (datos[1].equals(coche.getModelo())) {
+                             idCoche = coche.getIdCoche();
+                        }
+                    }
+                    for (Accesorios acce : acces) {
+                        if (datos[2].equals(acce.getNombre())) {
+                             idAcce = acce.getIdAccesorio();
+                        }
+                    }
+                    
 
-                    this.create(new Cocheaccesorio(id, this.ac.findById(idAccesorio), this.cc.findById(idCoche)));
+                    this.create(new Cocheaccesorio(id, this.ac.findById(idAcce), this.cc.findById(idCoche)));
 
                 }
             }

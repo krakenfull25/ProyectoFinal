@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entidades.Coches;
+import entidades.Marcas;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -157,7 +158,7 @@ public class CochesJpaController {
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("CopiaSeguridad/Coches.csv"))) {
             for (Coches coche : coches) {
                 writer.write(coche.getIdCoche() + ";" + coche.getModelo() + ";" + coche.getAnio() + ";" + coche.getPrecio()
-                        + ";" + coche.getTipoMotor() + ";" + coche.getIdMarca().getIdMarca());
+                        + ";" + coche.getTipoMotor() + ";" + coche.getIdMarca().getNombre());
                 writer.newLine();
             }
 
@@ -178,8 +179,15 @@ public class CochesJpaController {
                     int anio = Integer.parseInt(datos[2]);
                     double precio = Double.parseDouble(datos[3]);
                     String tipoMotor = datos[4];
-                    int idMarca = Integer.parseInt(datos[5]);
+                    
+                    int idMarca = 0;
+                    List<Marcas> marcas = this.mc.findAll();
 
+                    for (Marcas marca : marcas) {
+                        if (datos[5].equals(marca.getNombre())) {
+                             idMarca = marca.getIdMarca();
+                        }
+                    }
                     this.create(new Coches(id, modelo, anio, precio, tipoMotor, this.mc.findById(idMarca)));
                 }
             }
